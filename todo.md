@@ -1,279 +1,75 @@
-# Inventory Manager Project TODO
+# todo
 
-## Goal
-Build a beginner-friendly **Python Inventory Manager** to learn:
-- objects and classes
-- methods and attributes
-- lists of objects
-- file handling
-- program structure
-- real-world problem solving
+stuff already working and what still needs doing.
 
----
+## done
 
-# Version 1 = Core Inventory Manager
-## Objective
-Create a simple terminal-based inventory app with basic product management.
+- sqlite database setup with product table
+- product model with profit auto-calculated on creation
+- add command with validation (no empty fields, no negative numbers, type must be p or d)
+- list command that prints every product
+- help and exit commands
+- basic command loop in main.py
 
-## Features
-- [ ] Create a `Product` class
-- [ ] Create an `Inventory` class
-- [ ] Add new products
-- [ ] View all products
-- [ ] Search for a product by name
-- [ ] Update product quantity
-- [ ] Remove a product
-- [ ] Show total number of products
+## core features to add
 
-## Steps
-### 1. Plan the data
-- [ ] Decide what information a product should store
-- [ ] Choose basic fields:
-  - [ ] product ID
-  - [ ] name
-  - [ ] price
-  - [ ] quantity
-  - [ ] category
+these are the essentials that make the inventory actually usable.
 
-### 2. Build the `Product` class
-- [ ] Write the `Product` class
-- [ ] Add an `__init__` method
-- [ ] Store product details as attributes
-- [ ] Add a method to display product info
-- [ ] Add a method to calculate total value for that product
+- [ ] **delete** — remove a product by id. needs a confirmation prompt so you do not wipe something by accident.
+- [ ] **modify** — update fields of an existing product. ask for id first, show current values, let user overwrite.
+- [ ] **search** — find products by name or brand. partial matches, case insensitive.
+- [ ] **validate sell price** — warn or block if sell price is lower than buy price.
 
-### 3. Build the `Inventory` class
-- [ ] Create a list to store `Product` objects
-- [ ] Add a method to add a product
-- [ ] Add a method to remove a product
-- [ ] Add a method to search for a product
-- [ ] Add a method to list all products
-- [ ] Add a method to update stock quantity
+## useful additions
 
-### 4. Build the terminal menu
-- [ ] Show a text menu with numbered options
-- [ ] Let user choose actions
-- [ ] Connect each menu option to an `Inventory` method
-- [ ] Add an option to exit the program
+- [ ] **inventory value report** — total value of all stock, total potential profit.
+- [ ] **filter by category** — list only products in a chosen category.
+- [ ] **sort list** — sort by brand, category, profit, or price.
+- [ ] **low-stock alerts** — only makes sense if quantity tracking is added to the model.
+- [ ] **better formatted output** — align columns, cleaner spacing.
+- [ ] **edit product details** — similar to modify, maybe combined.
 
-### 5. Test Version 1
-- [ ] Add sample products
-- [ ] Search for existing and non-existing products
-- [ ] Update quantity
-- [ ] Remove a product
-- [ ] Make sure menu flow works correctly
+## data and export
 
----
+- [ ] **export to csv** — dump inventory to a file for spreadsheets.
+- [ ] **date added field** — track when a product was first entered.
+- [ ] **last updated field** — track when a product was last modified.
 
-# Version 2 = Better Inventory Features
-## Objective
-Make the app more useful and realistic.
+## more advanced stuff
 
-## Features
-- [ ] Low-stock alerts
-- [ ] Total inventory value report
-- [ ] Filter by category
-- [ ] Better formatted output
-- [ ] Input validation
+- [ ] **supplier info** — add a supplier name or a separate supplier table.
+- [ ] **restock history** — log every time stock increases with date and quantity.
+- [ ] **sales / stock movement history** — log decreases too, so you know what moved.
+- [ ] **stock quantity tracking** — right now there is no quantity field. adding this enables low-stock alerts and movement history.
 
-## Steps
-### 1. Low-stock logic
-- [ ] Decide a low-stock threshold
-- [ ] Add a method to show products below the threshold
+## interface ideas
 
-### 2. Inventory value
-- [ ] Add a method to calculate total inventory value
-- [ ] Show each product’s value
-- [ ] Show combined inventory value
+these are long-term options, pick one if the project ever grows past the terminal.
 
-### 3. Categories
-- [ ] Allow assigning categories to products
-- [ ] Add a method to filter by category
+- [ ] **gui version** — desktop interface with tkinter, forms and buttons, product table view.
+- [ ] **web version** — rebuild with flask, web forms, browser display.
 
-### 4. Input validation
-- [ ] Prevent empty product names
-- [ ] Prevent negative prices
-- [ ] Prevent negative quantities
-- [ ] Handle invalid menu choices safely
+## code quality
 
-### 5. Improve display
-- [ ] Make product listing easier to read
-- [ ] Align columns clearly
-- [ ] Show helpful messages for success/errors
+- [ ] **simple tests** — so refactoring later does not break things.
+- [ ] **better error messages** — tell the user exactly what went wrong.
+- [ ] **unique id generation** — sqlite already handles this, but good to keep in mind if storage ever changes.
 
----
+## learning goals
 
-# Version 3 = Save and Load Data
-## Objective
-Make the data persistent using JSON.
+check these off as you build:
 
-## Features
-- [ ] Save products to a JSON file
-- [ ] Load products from a JSON file when program starts
-- [ ] Convert objects to dictionaries
-- [ ] Rebuild objects from saved data
+- [ ] understand how classes and objects work
+- [ ] know how methods use self
+- [ ] be comfortable with sqlite connections and cursors
+- [ ] know how to validate input and keep asking until it is right
+- [ ] understand how to structure a small app across multiple files
+- [ ] know how to expand a project cleanly without making a mess
 
-## Steps
-### 1. Prepare `Product` for saving
-- [ ] Add a method to convert a product into a dictionary
-- [ ] Add a method or approach to create a product from saved dictionary data
+## rules for building
 
-### 2. Save inventory
-- [ ] Write a method to save all products to JSON
-- [ ] Save automatically when products change, or through a menu option
-
-### 3. Load inventory
-- [ ] Load JSON data at startup
-- [ ] Recreate `Product` objects from the file
-- [ ] Handle missing file case safely
-
-### 4. Test persistence
-- [ ] Add products
-- [ ] Save data
-- [ ] Restart program
-- [ ] Confirm products still exist
-
----
-
-# Version 4 = Realistic Business Features
-## Objective
-Add features that make the project stronger for your CV.
-
-## Features
-- [ ] Supplier info
-- [ ] Restock history
-- [ ] Sales / stock movement history
-- [ ] Export report to CSV
-
-## Steps
-### 1. Supplier support
-- [ ] Decide whether each product should have a supplier
-- [ ] Create a `Supplier` class or store supplier name first
-- [ ] Link suppliers to products
-
-### 2. Stock movement history
-- [ ] Record every stock increase
-- [ ] Record every stock decrease
-- [ ] Store date, action, quantity, and product name
-
-### 3. Exporting
-- [ ] Export inventory data to CSV
-- [ ] Export low-stock report
-- [ ] Export stock movement report
-
----
-
-# Version 5 = Advanced Upgrade Path
-## Objective
-Turn the project into something even more professional.
-
-## Choose one path
-### Option A = SQLite version
-- [ ] Replace JSON storage with SQLite
-- [ ] Learn basic SQL queries
-- [ ] Store products in database tables
-
-### Option B = GUI version
-- [ ] Build a desktop interface with Tkinter
-- [ ] Add forms and buttons
-- [ ] Show product list in a table
-
-### Option C = Web version
-- [ ] Rebuild with Flask
-- [ ] Add web forms
-- [ ] Display products in browser
-
----
-
-# Recommended File Structure
-- [ ] `main.py`
-- [ ] `product.py`
-- [ ] `inventory.py`
-- [ ] `data.json`
-- [ ] `README.md`
-
-Later:
-- [ ] `supplier.py`
-- [ ] `utils.py`
-- [ ] `reports.py`
-
----
-
-# Learning Goals by Version
-
-## After Version 1
-You should understand:
-- [ ] what a class is
-- [ ] what an object is
-- [ ] how `__init__` works
-- [ ] how methods use `self`
-- [ ] how to store objects in a list
-
-## After Version 2
-You should understand:
-- [ ] how to organize logic inside classes
-- [ ] how to validate input
-- [ ] how to add useful business rules
-
-## After Version 3
-You should understand:
-- [ ] how to save and load program data
-- [ ] how to convert objects into dictionaries
-- [ ] how persistence works in simple apps
-
-## After Version 4+
-You should understand:
-- [ ] how to expand a project cleanly
-- [ ] how to model more real-world entities
-- [ ] how to make a project more CV-worthy
-
----
-
-# Suggested Order of Work
-- [ ] Finish Version 1 completely
-- [ ] Refactor messy code before starting Version 2
-- [ ] Add Version 2 features one by one
-- [ ] Save/load with JSON in Version 3
-- [ ] Choose one advanced direction after that
-
----
-
-# Rules for Building
-- [ ] Keep classes small and clear
-- [ ] Do not add too many features too early
-- [ ] Test each feature before moving on
-- [ ] Refactor when code starts feeling repetitive
-- [ ] Focus on understanding, not speed
-
----
-
-# CV Notes
-When project is finished, aim to say something like:
-
-- [ ] Built a Python inventory management application using object-oriented programming
-- [ ] Implemented product tracking, stock updates, low-stock alerts, and inventory reports
-- [ ] Added persistent storage using JSON / SQLite
-- [ ] Structured the application using reusable classes and clean program design
-
----
-
-# Final Milestone Checklist
-- [ ] App runs without crashing
-- [ ] Products can be added, updated, searched, and removed
-- [ ] Low-stock items can be identified
-- [ ] Inventory value can be calculated
-- [ ] Data can be saved and loaded
-- [ ] Code is organized into multiple files
-- [ ] README explains how to run the project
-
----
-
-# Nice-to-Have Extras
-- [ ] Sort products by price or quantity
-- [ ] Search by category
-- [ ] Unique ID generation
-- [ ] Edit product details
-- [ ] Date added field
-- [ ] Last updated field
-- [ ] Simple test functions
-- [ ] Better error messages
+- keep classes small and clear
+- do not add too many features at once
+- test each feature before moving on
+- refactor when code starts feeling repetitive
+- focus on understanding, not speed
