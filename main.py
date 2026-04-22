@@ -1,38 +1,48 @@
-from datetime import datetime
+from database import create_table
+from functions import add_item, list_items, list_commands, available_commands
 
-class Product:
-    def __init__(self, id, type, category, brand_name, product_name, price_buy, price_sell, tax_percentage):
-        self.id = id
-        self.type = type
-        self.category = category
-        self.brand_name = brand_name
-        self.product_name = product_name
-        self.price_buy = price_buy
-        self.price_sell = price_sell
-        self.tax_percentage = tax_percentage
-        self.profit = price_sell - price_sell
-
-products = []
-
-def list_commands():
-    command = input("Enter command:\n")
-
-    if command not in  ("add", "del", "modify", "list", "help"):
-        print("Invalid command, type \"help\" to see all available commands.")
-    
-    if command == "add":
-        print("Enter product:\n")
-        id = int(input("Enter product ID:\n"))
-        if not isinstance(id, int):
-            print("ID can only be integer.") 
-        else:
-            products.append(id)
-
-        print("Enter product type (physical / digital)")
 
 def main():
+    
+    # making sure the table exists before program starts
+    create_table()
+
     print("Welcome to Pynventory!\n")
     print("Type \"help\" to see available commands.\n")
-    list_commands()
+
+    # running the program until user chooses exit
+    while True:
+        command = input("Enter command: ").strip().lower()
+
+        # running add command
+        if command == "add":
+            add_item()
+
+        # running list command
+        elif command == "list":
+            list_items()
+
+        # showing available commands
+        elif command == "help":
+            print(*available_commands, sep=", ")
+            print()
+
+        # closing the program
+        elif command == "exit":
+            print("Exiting Pynventory.")
+            break
+
+        # placeholder for future delete command
+        elif command == "del":
+            print("Delete function not implemented yet.\n")
+
+        # placeholder for future modify command
+        elif command == "modify":
+            print("Modify function not implemented yet.\n")
+
+        # showing help if command is invalid
+        else:
+            list_commands()
+
 
 main()
