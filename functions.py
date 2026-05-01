@@ -130,6 +130,33 @@ def add_item():
     # closing the connection
     conn.close()
 
+def del_item():
+    # connecting to sqlite database
+    conn = get_connection()
+
+    # creating a cursor object using the cursor() method
+    cursor = conn.cursor()
+
+    row_to_delete = input("Enter product ID to delete: ")
+
+    cursor.execute("SELECT id, brand_name, product_name FROM product WHERE id =?", (row_to_delete))
+    print(f"Selected ID is: {cursor.fetchone()}")
+    
+    action = None
+    while action != True:
+        answer = input("Are you sure you want to delete this product? yes/no: ")
+        if answer == "yes":
+            cursor.execute("DELETE FROM product WHERE id=?", (row_to_delete))
+            print(f"Product for ID {row_to_delete} is removed.")
+            conn.commit()
+            conn.close()
+            return True
+            
+        else: 
+            print("Incorrect answer: yes/no")
+            return False
+    
+
 
 # function to list all products in the database
 def list_items():
