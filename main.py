@@ -1,5 +1,5 @@
 from database import create_table
-from functions import add_item, list_items, list_commands, available_commands
+from functions import add_item, list_items, list_commands, available_commands, del_item
 
 
 def main():
@@ -34,7 +34,7 @@ def main():
 
         # placeholder for future delete command
         elif command == "del":
-            print("Delete function not implemented yet.\n")
+            del_item()
 
         # placeholder for future modify command
         elif command == "modify":
