@@ -32,7 +32,7 @@ def main():
             print("Exiting Pynventory.")
             break
 
-        # placeholder for future delete command
+        # deleting product by ID
         elif command == "del":
             del_item()
 
