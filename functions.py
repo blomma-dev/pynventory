@@ -125,7 +125,7 @@ def add_item():
 
     print("\nProduct added successfully.")
     print(f"Assigned ID: {product.id}")
-    print(f"Profit: {product.profit:.2f}\n")
+    print(f"Profit: {product.profit:.2f} not including tax.\n")
 
     # closing the connection
     conn.close()

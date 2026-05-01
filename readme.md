@@ -23,6 +23,7 @@ where the actual commands live:
 
 - **add_item** — asks for each field one by one. it does not let you skip required fields or enter garbage. keeps asking until the input makes sense. only when everything checks out does it create the `Product` object and save it to the database. also shows you the assigned id and profit after saving.
 - **list_items** — pulls every product from the database and prints them. if the table is empty, it just says so.
+- **del_item** — removes product by ID. verification safeguard.
 
 ## commands
 
@@ -32,7 +33,7 @@ where the actual commands live:
 | `list` | show all products |
 | `help` | print the list of commands |
 | `exit` | close the program |
-| `del` | placeholder — not implemented yet |
+| `del` | remove product by ID |
 | `modify` | placeholder — not implemented yet |
 
 ## quick start
