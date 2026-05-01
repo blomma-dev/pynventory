@@ -137,11 +137,17 @@ def del_item():
     # creating a cursor object using the cursor() method
     cursor = conn.cursor()
 
+    # ask user for row ID to delete
     row_to_delete = input("Enter product ID to delete: ")
 
+    # fetch the product by id and print the row information
     cursor.execute("SELECT id, brand_name, product_name FROM product WHERE id =?", (row_to_delete))
     print(f"Selected ID is: {cursor.fetchone()}")
     
+    # init action to None as default and while action is not true
+    # ask user for confirmation if the selected row should be deleted
+    # if yes, delete -> return true -> exit
+    # else/incorrect answer -> loop again
     action = None
     while action != True:
         answer = input("Are you sure you want to delete this product? yes/no: ")
