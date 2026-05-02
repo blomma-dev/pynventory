@@ -1,3 +1,5 @@
+import sqlite3
+
 from models import Product
 from database import get_connection
 
@@ -6,11 +8,37 @@ from database import get_connection
 available_commands = ["add", "del", "modify", "list", "help", "exit"]
 
 
+def print_options(title, options):
+    print(title)
+    for option in options:
+        print(f"- {option}")
+    print()
+
+
+def is_non_negative_number(value):
+    text = value.strip()
+    if not text:
+        return False
+    if text.count(".") > 1:
+        return False
+    if text.startswith("-"):
+        return False
+    number_part = text.replace(".", "", 1)
+    return number_part.isdigit()
+
+
+def print_product_brief(product):
+    print(f"\nCategory: {product[2]}")
+    print(f"Brand: {product[3]}")
+    print(f"Name: {product[4]}")
+    print(f"Buy price: {product[5]}")
+    print(f"Sell price: {product[6]}")
+    print(f"Tax: {product[7]}\n")
+
+
 # create function to list commands
 def list_commands():
-    print("Incorrect command, available commands below:\n")
-    print(*available_commands, sep=", ")
-    print()
+    print_options("Incorrect command. Available commands:", available_commands)
 
 
 # function to add a new product
@@ -53,36 +81,30 @@ def add_item():
 
     # asking for buy price until a valid number is entered
     while True:
-        try:
-            price_buy = float(input("Enter buy price: ").strip())
-            if price_buy < 0:
-                print("Buy price cannot be negative.\n")
-                continue
-            break
-        except ValueError:
+        value = input("Enter buy price: ").strip()
+        if not is_non_negative_number(value):
             print("Buy price must be a number.\n")
+            continue
+        price_buy = float(value)
+        break
 
     # asking for sell price until a valid number is entered
     while True:
-        try:
-            price_sell = float(input("Enter sell price: ").strip())
-            if price_sell < 0:
-                print("Sell price cannot be negative.\n")
-                continue
-            break
-        except ValueError:
+        value = input("Enter sell price: ").strip()
+        if not is_non_negative_number(value):
             print("Sell price must be a number.\n")
+            continue
+        price_sell = float(value)
+        break
 
     # asking for tax percentage until a valid number is entered
     while True:
-        try:
-            tax_percentage = float(input("Enter tax percentage: ").strip())
-            if tax_percentage < 0:
-                print("Tax percentage cannot be negative.\n")
-                continue
-            break
-        except ValueError:
+        value = input("Enter tax percentage: ").strip()
+        if not is_non_negative_number(value):
             print("Tax percentage must be a number.\n")
+            continue
+        tax_percentage = float(value)
+        break
 
     # creating product object only after all required fields are valid
     product = Product(
@@ -130,39 +152,173 @@ def add_item():
     # closing the connection
     conn.close()
 
+# function to delete a product by id
 def del_item():
     # connecting to sqlite database
     conn = get_connection()
-
     # creating a cursor object using the cursor() method
     cursor = conn.cursor()
 
-    # ask user for row ID to delete
+    # ask user for row id to delete
     row_to_delete = input("Enter product ID to delete: ")
 
-    # fetch the product by id and print the row information
-    cursor.execute("SELECT id, brand_name, product_name FROM product WHERE id =?", (row_to_delete))
-    print(f"Selected ID is: {cursor.fetchone()}")
-    
-    # init action to None as default and while action is not true
-    # ask user for confirmation if the selected row should be deleted
-    # if yes, delete -> return true -> exit
-    # else/incorrect answer -> loop again
-    action = None
-    while action != True:
-        answer = input("Are you sure you want to delete this product? yes/no: ")
-        if answer == "yes":
-            cursor.execute("DELETE FROM product WHERE id=?", (row_to_delete))
-            print(f"Product for ID {row_to_delete} is removed.")
-            conn.commit()
-            conn.close()
-            return True
-            
-        else: 
-            print("Incorrect answer: yes/no")
-            return False
-    
+    # fetch the product by id
+    cursor.execute("SELECT id, brand_name, product_name FROM product WHERE id = ?", (row_to_delete,))
+    product = cursor.fetchone()
 
+    result = False
+
+    # if id not found, exit
+    if product is None:
+        print(f"No product found with ID {row_to_delete}.")
+    else:
+        print(f"Selected: ID {product[0]}, {product[1]} {product[2]}")
+
+        # ask for confirmation until yes or no is entered
+        while True:
+            answer = input("Delete this product? yes/no: ").strip().lower()
+            if answer == "yes":
+                cursor.execute("DELETE FROM product WHERE id = ?", (row_to_delete,))
+                conn.commit()
+                print(f"Product {row_to_delete} deleted.")
+                result = True
+                break
+            if answer == "no":
+                print("Cancelled.")
+                break
+            print("Type yes or no.")
+
+    conn.close()
+    return result
+
+# function to modify a product by id and field
+def modify_item():
+    available_to_update = ["category", "brand", "name", "buy price", "sell price", "tax", "list", "exit", "help"]
+
+    # connecting to sqlite database
+    conn = get_connection()
+    # creating a cursor object using the cursor() method
+    cursor = conn.cursor()
+
+    print('Type "list" to show products, "exit" to close, "help" for options.')
+
+    # ask for which id to modify
+    while True:
+        row_to_update = input("Enter product ID to update: ").strip().lower()
+
+        if row_to_update == "list":
+            list_items()
+            continue
+
+        if row_to_update == "help":
+            print_options("Available options:", available_to_update)
+            continue
+
+        if row_to_update == "exit":
+            print("Exiting modification mode...")
+            conn.close()
+            return
+
+        break
+
+    # fetch the product by id
+    cursor.execute("SELECT * FROM product WHERE id = ?", (row_to_update,))
+    product = cursor.fetchone()
+
+    # if id not found, exit
+    if product is None:
+        print(f"No product found with ID {row_to_update}.")
+        conn.close()
+        return
+
+    # print current product values
+    print_product_brief(product)
+
+
+    # ask user for which field to modify
+    while True:
+        command = input("Enter field to modify: ").strip().lower()
+
+        if command == "exit":
+            print("Exiting modification mode...")
+            conn.close()
+            return
+
+        if command == "help":
+            print_options("Available options:", available_to_update)
+            continue
+
+        if command == "list":
+            list_items()
+            continue
+
+        if command == "category":
+            # asking for new category until something is entered
+            while True:
+                value = input("Enter new category: ").strip()
+                if value:
+                    break
+                print("Category cannot be empty.")
+            cursor.execute("UPDATE product SET category = ? WHERE id = ?", (value, row_to_update))
+
+        elif command == "brand":
+            # asking for new brand until something is entered
+            while True:
+                value = input("Enter new brand: ").strip()
+                if value:
+                    break
+                print("Brand cannot be empty.")
+            cursor.execute("UPDATE product SET brand_name = ? WHERE id = ?", (value, row_to_update))
+
+        elif command == "name":
+            # asking for new product name until something is entered
+            while True:
+                value = input("Enter new name: ").strip()
+                if value:
+                    break
+                print("Name cannot be empty.")
+            cursor.execute("UPDATE product SET product_name = ? WHERE id = ?", (value, row_to_update))
+
+        elif command == "buy price":
+            # asking for new buy price until a valid number is entered
+            while True:
+                value = input("Enter new buy price: ").strip()
+                if not is_non_negative_number(value):
+                    print("Price must be a number.")
+                    continue
+                value = float(value)
+                break
+            cursor.execute("UPDATE product SET price_buy = ? WHERE id = ?", (value, row_to_update))
+
+        elif command == "sell price":
+            # asking for new sell price until a valid number is entered
+            while True:
+                value = input("Enter new sell price: ").strip()
+                if not is_non_negative_number(value):
+                    print("Price must be a number.")
+                    continue
+                value = float(value)
+                break
+            cursor.execute("UPDATE product SET price_sell = ? WHERE id = ?", (value, row_to_update))
+
+        elif command == "tax":
+            # asking for new tax percentage until a valid number is entered
+            while True:
+                value = input("Enter new tax: ").strip()
+                if not is_non_negative_number(value):
+                    print("Tax must be a number.")
+                    continue
+                value = float(value)
+                break
+            cursor.execute("UPDATE product SET tax_percentage = ? WHERE id = ?", (value, row_to_update))
+
+        else:
+            print_options("Unknown option. Available options:", available_to_update)
+            continue
+
+        # commit changes and stay in modify mode
+        conn.commit()
+        print("Updated successfully.")
 
 # function to list all products in the database
 def list_items():
@@ -188,13 +344,13 @@ def list_items():
         print("\nProducts:\n")
         for product in products:
             print(
-                f"ID: {product[0]}, "
-                f"Type: {product[1]}, "
-                f"Category: {product[2]}, "
-                f"Brand: {product[3]}, "
-                f"Name: {product[4]}, "
-                f"Buy: {product[5]:.2f}, "
-                f"Sell: {product[6]:.2f}, "
+                f"ID: {product[0]} | "
+                f"Type: {product[1]} | "
+                f"Category: {product[2]} | "
+                f"Brand: {product[3]} | "
+                f"Name: {product[4]} | "
+                f"Buy: {product[5]:.2f} | "
+                f"Sell: {product[6]:.2f} | "
                 f"Tax: {product[7]:.2f}%"
             )
         print()

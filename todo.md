@@ -11,13 +11,14 @@ stuff already working and what still needs doing.
 - help and exit commands
 - basic command loop in main.py
 - delete product by id
+- modify product by id and field in product
 
 ## core features to add
 
 these are the essentials that make the inventory actually usable.
 
 - [x] **delete** — remove a product by id. needs a confirmation prompt so you do not wipe something by accident.
-- [ ] **modify** — update fields of an existing product. ask for id first, show current values, let user overwrite.
+- [x] **modify** — update fields of an existing product. ask for id first, show current values, let user overwrite.
 - [ ] **search** — find products by name or brand. partial matches, case insensitive.
 - [ ] **validate sell price** — warn or block if sell price is lower than buy price.
 
