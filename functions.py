@@ -1,8 +1,5 @@
-import sqlite3
-
-from models import Product
 from database import get_connection
-
+from models import Product
 
 # create a list of commands
 available_commands = ["add", "del", "modify", "list", "help", "exit"]
@@ -53,7 +50,9 @@ def add_item():
 
     # asking for item type until correct value is entered
     while True:
-        item_type = input("Enter product type (physical = p / digital = d): ").strip().lower()
+        item_type = (
+            input("Enter product type (physical = p / digital = d): ").strip().lower()
+        )
         if item_type in ["p", "d"]:
             break
         print("Invalid input. Enter 'p' or 'd'.\n")
@@ -114,11 +113,12 @@ def add_item():
         product_name,
         price_buy,
         price_sell,
-        tax_percentage
+        tax_percentage,
     )
 
     # inserting the product into the database only after everything is complete
-    cursor.execute("""
+    cursor.execute(
+        """
         INSERT INTO product (
             item_type,
             category,
@@ -129,15 +129,17 @@ def add_item():
             tax_percentage
         )
         VALUES (?, ?, ?, ?, ?, ?, ?)
-    """, (
-        product.item_type,
-        product.category,
-        product.brand_name,
-        product.product_name,
-        product.price_buy,
-        product.price_sell,
-        product.tax_percentage
-    ))
+    """,
+        (
+            product.item_type,
+            product.category,
+            product.brand_name,
+            product.product_name,
+            product.price_buy,
+            product.price_sell,
+            product.tax_percentage,
+        ),
+    )
 
     # storing the automatically generated id in the product object
     product.id = cursor.lastrowid
@@ -152,6 +154,7 @@ def add_item():
     # closing the connection
     conn.close()
 
+
 # function to delete a product by id
 def del_item():
     # connecting to sqlite database
@@ -163,7 +166,10 @@ def del_item():
     row_to_delete = input("Enter product ID to delete: ")
 
     # fetch the product by id
-    cursor.execute("SELECT id, brand_name, product_name FROM product WHERE id = ?", (row_to_delete,))
+    cursor.execute(
+        "SELECT id, brand_name, product_name FROM product WHERE id = ?",
+        (row_to_delete,),
+    )
     product = cursor.fetchone()
 
     result = False
@@ -191,9 +197,20 @@ def del_item():
     conn.close()
     return result
 
+
 # function to modify a product by id and field
 def modify_item():
-    available_to_update = ["category", "brand", "name", "buy price", "sell price", "tax", "list", "exit", "help"]
+    available_to_update = [
+        "category",
+        "brand",
+        "name",
+        "buy price",
+        "sell price",
+        "tax",
+        "list",
+        "exit",
+        "help",
+    ]
 
     # connecting to sqlite database
     conn = get_connection()
@@ -234,7 +251,6 @@ def modify_item():
     # print current product values
     print_product_brief(product)
 
-
     # ask user for which field to modify
     while True:
         command = input("Enter field to modify: ").strip().lower()
@@ -259,7 +275,9 @@ def modify_item():
                 if value:
                     break
                 print("Category cannot be empty.")
-            cursor.execute("UPDATE product SET category = ? WHERE id = ?", (value, row_to_update))
+            cursor.execute(
+                "UPDATE product SET category = ? WHERE id = ?", (value, row_to_update)
+            )
 
         elif command == "brand":
             # asking for new brand until something is entered
@@ -268,7 +286,9 @@ def modify_item():
                 if value:
                     break
                 print("Brand cannot be empty.")
-            cursor.execute("UPDATE product SET brand_name = ? WHERE id = ?", (value, row_to_update))
+            cursor.execute(
+                "UPDATE product SET brand_name = ? WHERE id = ?", (value, row_to_update)
+            )
 
         elif command == "name":
             # asking for new product name until something is entered
@@ -277,7 +297,10 @@ def modify_item():
                 if value:
                     break
                 print("Name cannot be empty.")
-            cursor.execute("UPDATE product SET product_name = ? WHERE id = ?", (value, row_to_update))
+            cursor.execute(
+                "UPDATE product SET product_name = ? WHERE id = ?",
+                (value, row_to_update),
+            )
 
         elif command == "buy price":
             # asking for new buy price until a valid number is entered
@@ -288,7 +311,9 @@ def modify_item():
                     continue
                 value = float(value)
                 break
-            cursor.execute("UPDATE product SET price_buy = ? WHERE id = ?", (value, row_to_update))
+            cursor.execute(
+                "UPDATE product SET price_buy = ? WHERE id = ?", (value, row_to_update)
+            )
 
         elif command == "sell price":
             # asking for new sell price until a valid number is entered
@@ -299,7 +324,9 @@ def modify_item():
                     continue
                 value = float(value)
                 break
-            cursor.execute("UPDATE product SET price_sell = ? WHERE id = ?", (value, row_to_update))
+            cursor.execute(
+                "UPDATE product SET price_sell = ? WHERE id = ?", (value, row_to_update)
+            )
 
         elif command == "tax":
             # asking for new tax percentage until a valid number is entered
@@ -310,7 +337,10 @@ def modify_item():
                     continue
                 value = float(value)
                 break
-            cursor.execute("UPDATE product SET tax_percentage = ? WHERE id = ?", (value, row_to_update))
+            cursor.execute(
+                "UPDATE product SET tax_percentage = ? WHERE id = ?",
+                (value, row_to_update),
+            )
 
         else:
             print_options("Unknown option. Available options:", available_to_update)
@@ -319,6 +349,7 @@ def modify_item():
         # commit changes and stay in modify mode
         conn.commit()
         print("Updated successfully.")
+
 
 # function to list all products in the database
 def list_items():
