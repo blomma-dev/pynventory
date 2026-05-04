@@ -8,6 +8,8 @@ class Product:
         price_buy,
         price_sell,
         tax_percentage,
+        weight,
+        in_stock,
         id=None,
     ):
         self.id = id
@@ -19,3 +21,5 @@ class Product:
         self.price_sell = price_sell
         self.tax_percentage = tax_percentage
         self.profit = price_sell - price_buy
+        self.weight = weight
+        self.in_stock = in_stock

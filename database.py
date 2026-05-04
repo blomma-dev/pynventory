@@ -24,7 +24,9 @@ def create_table():
         product_name TEXT NOT NULL,
         price_buy REAL NOT NULL,
         price_sell REAL NOT NULL,
-        tax_percentage REAL NOT NULL
+        tax_percentage REAL NOT NULL,
+        weight REAL NOT NULL,
+        in_stock REAL NOT NULL
     )
     """)
 
