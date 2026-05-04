@@ -31,7 +31,7 @@ these are the essentials that make the inventory actually usable.
 - [ ] **low-stock alerts** — only makes sense if quantity tracking is added to the model.
 - [ ] **better formatted output** — align columns, cleaner spacing.
 - [ ] **edit product details** — similar to modify, maybe combined.
-- [ ] **finalize collaboration guidelines** - can be found in it's own branch, write the guidelines.
+- [ ] **finalize collaboration guidelines** - can be found in it's own branch, write the guidelines and more.
 
 ## data and export
 
