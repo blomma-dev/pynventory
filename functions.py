@@ -30,7 +30,9 @@ def print_product_brief(product):
     print(f"Name: {product[4]}")
     print(f"Buy price: {product[5]}")
     print(f"Sell price: {product[6]}")
-    print(f"Tax: {product[7]}\n")
+    print(f"Tax: {product[7]}")
+    print(f"Weight: {product[8]}")
+    print(f"Stock: {product[9]}\n")
 
 
 # create function to list commands
@@ -63,21 +65,21 @@ def add_item():
 
     # asking for category until something is entered
     while True:
-        category = input("Enter category: ").strip().lower()
+        category = input("Enter category: ").strip().title()
         if category:
             break
         print("Category cannot be empty.\n")
 
     # asking for brand name until something is entered
     while True:
-        brand_name = input("Enter brand name: ").strip().lower()
+        brand_name = input("Enter brand name: ").strip().title()
         if brand_name:
             break
         print("Brand name cannot be empty.\n")
 
     # asking for product name until something is entered
     while True:
-        product_name = input("Enter product name: ").strip().lower()
+        product_name = input("Enter product name: ").strip().title()
         if product_name:
             break
         print("Product name cannot be empty.\n")
@@ -109,6 +111,24 @@ def add_item():
         tax_percentage = float(value)
         break
 
+    # asking for weight until a valid number is entered
+    while True:
+        value = input("Enter weight (g): ").strip()
+        if not is_non_negative_number(value):
+            print("Weight must be a number.\n")
+            continue
+        weight = int(value)
+        break
+
+    # asking for stock until a valid number is entered
+    while True:
+        value = input("Enter stock: ").strip()
+        if not is_non_negative_number(value):
+            print("Amount must be a number.\n")
+            continue
+        in_stock = int(value)
+        break
+
     # creating product object only after all required fields are valid
     product = Product(
         item_type,
@@ -118,6 +138,8 @@ def add_item():
         price_buy,
         price_sell,
         tax_percentage,
+        weight,
+        in_stock,
     )
 
     # inserting the product into the database only after everything is complete
@@ -130,9 +152,11 @@ def add_item():
             product_name,
             price_buy,
             price_sell,
-            tax_percentage
+            tax_percentage,
+            weight,
+            in_stock
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     """,
         (
             product.item_type,
@@ -142,6 +166,8 @@ def add_item():
             product.price_buy,
             product.price_sell,
             product.tax_percentage,
+            product.weight,
+            product.in_stock,
         ),
     )
 
@@ -186,7 +212,7 @@ def del_item():
 
         # ask for confirmation until yes or no is entered
         while True:
-            answer = input("Delete this product? yes/no: ").strip().lower()
+            answer = input("Delete this product? yes/no: ").strip().title()
             if answer == "yes":
                 cursor.execute("DELETE FROM product WHERE id = ?", (row_to_delete,))
                 conn.commit()
@@ -211,6 +237,8 @@ def modify_item():
         "buy price",
         "sell price",
         "tax",
+        "weight",
+        "stock",
         "list",
         "exit",
         "help",
@@ -225,7 +253,7 @@ def modify_item():
 
     # ask for which id to modify
     while True:
-        row_to_update = input("Enter product ID to update: ").strip().lower()
+        row_to_update = input("Enter product ID to update: ").strip()
 
         if row_to_update == "list":
             list_items()
@@ -275,7 +303,7 @@ def modify_item():
         if command == "category":
             # asking for new category until something is entered
             while True:
-                value = input("Enter new category: ").strip().lower()
+                value = input("Enter new category: ").strip().title()
                 if value:
                     break
                 print("Category cannot be empty.")
@@ -286,7 +314,7 @@ def modify_item():
         elif command == "brand":
             # asking for new brand until something is entered
             while True:
-                value = input("Enter new brand: ").strip().lower()
+                value = input("Enter new brand: ").strip().title()
                 if value:
                     break
                 print("Brand cannot be empty.")
@@ -297,7 +325,7 @@ def modify_item():
         elif command == "name":
             # asking for new product name until something is entered
             while True:
-                value = input("Enter new name: ").strip().lower()
+                value = input("Enter new name: ").strip().title()
                 if value:
                     break
                 print("Name cannot be empty.")
@@ -346,6 +374,34 @@ def modify_item():
                 (value, row_to_update),
             )
 
+        elif command == "weight":
+            # asking for new tax percentage until a valid number is entered
+            while True:
+                value = input("Enter new weight: ").strip()
+                if not is_non_negative_number(value):
+                    print("Weight must be a number.")
+                    continue
+                value = int(value)
+                break
+            cursor.execute(
+                "UPDATE product SET weight = ? WHERE id = ?",
+                (value, row_to_update),
+            )
+
+        elif command == "stock":
+            # asking for new tax percentage until a valid number is entered
+            while True:
+                value = input("Enter new stock: ").strip()
+                if not is_non_negative_number(value):
+                    print("Amount must be a number.")
+                    continue
+                value = int(value)
+                break
+            cursor.execute(
+                "UPDATE product SET in_stock = ? WHERE id = ?",
+                (value, row_to_update),
+            )
+
         else:
             print_options("Unknown option. Available options:", available_to_update)
             continue
@@ -365,7 +421,7 @@ def list_items():
 
     # selecting all products from the table
     cursor.execute("""
-        SELECT id, item_type, category, brand_name, product_name, price_buy, price_sell, tax_percentage
+        SELECT id, item_type, category, brand_name, product_name, price_buy, price_sell, tax_percentage, weight, in_stock
         FROM product
     """)
 
@@ -386,7 +442,9 @@ def list_items():
                 f"Name: {product[4]} | "
                 f"Buy: {product[5]:.2f} | "
                 f"Sell: {product[6]:.2f} | "
-                f"Tax: {product[7]:.2f}%"
+                f"Tax: {product[7]:.2f}% | "
+                f"Weight: {int(product[8])}g | "
+                f"In Stock: {int(product[9])} pcs."
             )
         print()
 
