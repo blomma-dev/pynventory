@@ -212,7 +212,7 @@ def del_item():
 
         # ask for confirmation until yes or no is entered
         while True:
-            answer = input("Delete this product? yes/no: ").strip().title()
+            answer = input("Delete this product? yes/no: ").strip()
             if answer == "yes":
                 cursor.execute("DELETE FROM product WHERE id = ?", (row_to_delete,))
                 conn.commit()
@@ -314,7 +314,9 @@ def modify_item():
         elif command == "brand":
             # asking for new brand until something is entered
             while True:
-                value = input("Enter new brand: ").strip().title()
+                value = input(
+                    "Enter new brand: "
+                ).strip()  # TODO fix capitalization after special character i.e: " ' "
                 if value:
                     break
                 print("Brand cannot be empty.")
