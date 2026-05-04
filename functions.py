@@ -2,7 +2,7 @@ from database import get_connection
 from models import Product
 
 # create a list of commands
-available_commands = ["add", "del", "modify", "list", "help", "exit"]
+available_commands = ["add", "del", "mod", "list", "help", "exit"]
 
 
 def print_options(title, options):
@@ -53,27 +53,31 @@ def add_item():
         item_type = (
             input("Enter product type (physical = p / digital = d): ").strip().lower()
         )
-        if item_type in ["p", "d"]:
+        if item_type == "p":
+            item_type = "physical"
+        elif item_type == "d":
+            item_type = "digital"
+        if item_type in ["physical", "digital"]:
             break
         print("Invalid input. Enter 'p' or 'd'.\n")
 
     # asking for category until something is entered
     while True:
-        category = input("Enter category: ").strip()
+        category = input("Enter category: ").strip().lower()
         if category:
             break
         print("Category cannot be empty.\n")
 
     # asking for brand name until something is entered
     while True:
-        brand_name = input("Enter brand name: ").strip()
+        brand_name = input("Enter brand name: ").strip().lower()
         if brand_name:
             break
         print("Brand name cannot be empty.\n")
 
     # asking for product name until something is entered
     while True:
-        product_name = input("Enter product name: ").strip()
+        product_name = input("Enter product name: ").strip().lower()
         if product_name:
             break
         print("Product name cannot be empty.\n")
@@ -178,7 +182,7 @@ def del_item():
     if product is None:
         print(f"No product found with ID {row_to_delete}.")
     else:
-        print(f"Selected: ID {product[0]}, {product[1]} {product[2]}")
+        print(f"Selected: ID {product[0]} | {product[1]} | {product[2]}")
 
         # ask for confirmation until yes or no is entered
         while True:
@@ -186,7 +190,7 @@ def del_item():
             if answer == "yes":
                 cursor.execute("DELETE FROM product WHERE id = ?", (row_to_delete,))
                 conn.commit()
-                print(f"Product {row_to_delete} deleted.")
+                print(f"Product with ID: {row_to_delete} deleted.")
                 result = True
                 break
             if answer == "no":
@@ -271,7 +275,7 @@ def modify_item():
         if command == "category":
             # asking for new category until something is entered
             while True:
-                value = input("Enter new category: ").strip()
+                value = input("Enter new category: ").strip().lower()
                 if value:
                     break
                 print("Category cannot be empty.")
@@ -282,7 +286,7 @@ def modify_item():
         elif command == "brand":
             # asking for new brand until something is entered
             while True:
-                value = input("Enter new brand: ").strip()
+                value = input("Enter new brand: ").strip().lower()
                 if value:
                     break
                 print("Brand cannot be empty.")
@@ -293,7 +297,7 @@ def modify_item():
         elif command == "name":
             # asking for new product name until something is entered
             while True:
-                value = input("Enter new name: ").strip()
+                value = input("Enter new name: ").strip().lower()
                 if value:
                     break
                 print("Name cannot be empty.")

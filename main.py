@@ -1,5 +1,12 @@
 from database import create_table
-from functions import add_item, list_items, list_commands, available_commands, del_item, modify_item
+from functions import (
+    add_item,
+    available_commands,
+    del_item,
+    list_commands,
+    list_items,
+    modify_item,
+)
 
 
 def main():
@@ -23,7 +30,7 @@ def main():
             break
         elif command == "del":
             del_item()
-        elif command == "modify":
+        elif command == "mod":
             modify_item()
         else:
             list_commands()

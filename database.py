@@ -17,7 +17,7 @@ def create_table():
     # creating table as per requirement
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS product (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        id INTEGER PRIMARY KEY,
         item_type TEXT NOT NULL,
         category TEXT NOT NULL,
         brand_name TEXT NOT NULL,
