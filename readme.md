@@ -13,7 +13,7 @@ Stores everything in a local sqlite database so data persists between runs.
 Main program, it makes sure the database table exists, then drops into a command loop that keeps running until you type `exit`.
 
 ### models.py
-Holds the `Product` class. Stores all the usual fields (type, category, brand, name, prices, tax) and calculates profit right away when the object is created. Profit is just `sell price - buy price`.
+Holds the `Product` class. Stores all the usual fields (type, category, brand, name, prices, tax, weight and stock amount) and calculates profit right away when the object is created. Profit is just `sell price - buy price` (so far).
 
 ### database.py
 Handles the sqlite stuff. `get_connection()` opens the database, `create_table()` builds the product table if it is missing. this is why the app does not crash on first run.
