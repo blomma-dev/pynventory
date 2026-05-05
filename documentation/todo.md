@@ -25,7 +25,7 @@ these are the essentials that make the inventory actually usable.
 
 ## useful additions
 
-- [ ] **better dev experience** — spoluig logic of code into more modular and smaller bits / separate files.
+- [ ] **better dev experience** — logic of code into more modular and smaller bits / separate files.
 - [ ] **inventory value report** — total value of all stock, total potential profit.
 - [ ] **filter by category** — list only products in a chosen category.
 - [ ] **sort list** — sort by brand, category, profit, or price.
