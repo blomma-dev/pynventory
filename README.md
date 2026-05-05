@@ -1,96 +1,72 @@
 # Pynventory
 
-A small inventory tracker built with python and sqlite. A learning project where you gain real-world collaboration experience by building something together — branches, pull requests, code reviews, and a shared codebase, just like a real dev team. No AI for code generation.
+A small inventory tracker built with Python and SQLite.
 
-READ DOCUMENTATION FOR GETTING STARTED IN DOCUMENTATION FOLDER
+Pynventory is a terminal-based learning project focused on both building software and collaborating like a real dev team. The app tracks products you buy and sell, stores them in a local SQLite database, and gives contributors a place to practice branching, pull requests, code reviews, and team workflow. The project lives on and expands as the scope is not fixed.
 
-## What this project is about
+This project is intentionally simple in the beginning, so contributors can focus on learning development workflow as well as Python.
 
-Pynventory is a terminal-based tool that tracks products you buy and sell, calculates profit, and stores everything in a local sqlite database.
+## Getting started
 
-But more importantly, it is a sandbox for practicing software development skills. The app itself is simple on purpose — the real value is in how we work on it together.
+To get started, open the link below and read through the developer handbook and collaboration guidance.
+
+**[Click to open the Pynventory wiki](https://github.com/blomma-dev/pynventory/wiki)**
+
+The wiki is the main place for setup, contribution guidance, and project documentation.
+
 
 ## What you gain
 
-- **OOP in practice** — classes, methods, `self`, and how to structure code across multiple files.
-- **SQLite experience** — real database connections, queries, and schema design.
-- **Git workflow** — branching, committing, pushing, pulling, and opening pull requests.
-- **Code review** — both giving and receiving constructive feedback.
-- **Collaboration skills** — discussing features before coding, working from a shared todo list, and communicating in a team setting.
-- **Something for your portfolio** — a real project with a commit history that shows you can work with others.
+By contributing to this project, you can practice:
 
-## What you can expect
+- object-oriented programming in Python
+- working with SQLite and data models
+- using Git branches and pull requests
+- reading and giving code reviews
+- collaborating in a shared project
+- building a portfolio with real commit history
 
-- **A low-pressure environment** — this is for learning. Mistakes are expected and part of the process.
-- **Constructive feedback** — reviews focus on the code, not the person.
-- **A growing codebase** — features get added over time, so there is always something to work on.
-- **Real dev tooling** — ruff for formatting/linting, git for version control, and a branch-based workflow.
-- **Guidance** — the collaboration guidelines and developer handbook walk you through everything from setup to pull requests.
+## What to expect
 
-Read the collaboration guidelines and developer handbook to understand the ways of working on this project.
+This project aims to be a low-pressure place to learn. You can expect:
+
+- a learning-focused environment
+- constructive feedback
+- a growing codebase
+- real dev tooling
+- shared team workflow
+- work on the areas you like the most
 
 ## Discord
 
-We use Discord for discussing ideas, asking questions, reporting bugs, and sharing work in progress. Check in before coding anything bigger than a small fix.
+We use Discord to discuss ideas, ask questions, report bugs, and share work in progress.
 
-Ask the project owner for an invite to the server. Once you are in, check the pinned posts in the development and issues forums for posting guides.
+Ask the project owner for an invite. Once you are in, check the pinned posts in the development and issues forums for posting guides.
 
 ## What it does
 
-Keeps track of products you buy and sell. Calculates profit for each item automatically.
-Stores everything in a local sqlite database so data persists between runs.
+Pynventory lets you:
 
-## How it works
+- add products to inventory
+- list saved products
+- update existing products
+- delete products
+- store data between runs using SQLite
 
-### main.py
-Main program, it makes sure the database table exists, then drops into a command loop that keeps running until you type `exit`.
+## Commands
 
-### models.py
-Holds the `Product` class. Stores all the usual fields (type, category, brand, name, prices, tax, weight and stock amount) and calculates profit right away when the object is created. Profit is just `sell price - buy price` (so far).
+| Command | What it does |
+|---|---|
+| `add` | Add a new product to the inventory |
+| `list` | Show all products |
+| `mod` | Update a product by ID |
+| `del` | Remove a product by ID |
+| `help` | Print the list of commands |
+| `exit` | Close the program |
 
-### database.py
-Handles the sqlite stuff. `get_connection()` opens the database, `create_table()` builds the product table if it is missing. this is why the app does not crash on first run.
+## Running the app
 
-### functions.py
-where the actual commands live:
-
-- **add_item** — asks for each field one by one. it does not let you skip required fields or enter garbage. keeps asking until the input makes sense. only when everything checks out does it create the `Product` object and save it to the database. also shows you the assigned id and profit after saving.
-- **list_items** — pulls every product from the database and prints them. if the table is empty, it just says so.
-- **del_item** — removes product by ID. verification safeguard.
-- **modify_item** — updates product by id, field selectable
-
-## commands
-
-| command | what it does                              |
-|---------|-------------------------------------------|
-| `add`   | add a new product to the inventory        |
-| `list`  | show all products                         |
-| `help`  | print the list of commands                |
-| `exit`  | close the program                         |
-| `del`   | remove product by ID                      |
-| `mod`   | update a product's fields by ID           |
-
-## quick start
+Run the program with:
 
 ```bash
 python main.py
-```
-
-then type `help` to see what you can do.
-
-```bash
-python database.py
-```
-
-to init the database
-
-## docs
-
-- `collaboration_guidelines.md` — how we work together, branch rules, code review, merge policy.
-- `developer_handbook.md` — dev environment setup, git workflow tutorial, code style, pull request expectations.
-
-## notes
-
-- product type accepts `p` for physical or `d` for digital.
-- prices and tax cannot be negative.
-- sqlite file `products.db` gets created in the same folder on first run.
