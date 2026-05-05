@@ -99,7 +99,7 @@ NOTE:
 - master branch is the main "production" version
 - development happens on development branch
 - create a branch when you make changes
-- changes from your branch get merged to development, aopencodend development gets merged to master once release happens.
+- changes from your branch get merged to development, development gets merged to master once release happens.
 
 ### 3.1 Clone the repository
 
