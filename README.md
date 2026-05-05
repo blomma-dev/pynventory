@@ -2,6 +2,8 @@
 
 A small inventory tracker built with python and sqlite. A learning project where you gain real-world collaboration experience by building something together — branches, pull requests, code reviews, and a shared codebase, just like a real dev team. No AI for code generation.
 
+READ DOCUMENTATION FOR GETTING STARTED IN DOCUMENTATION FOLDER
+
 ## What this project is about
 
 Pynventory is a terminal-based tool that tracks products you buy and sell, calculates profit, and stores everything in a local sqlite database.
