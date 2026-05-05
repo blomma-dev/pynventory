@@ -94,6 +94,13 @@ Currently this only includes Ruff, the formatter and linter. The project itself 
 
 This walks you through the full process, from cloning to having your code merged. If you already know git, skip ahead to the [quick reference](#4-git-workflow--quick-reference).
 
+
+NOTE:
+- master branch is the main "production" version
+- development happens on development branch
+- create a branch when you make changes
+- changes from your branch get merged to development, development gets merged to master once release happens.
+
 ### 3.1 Clone the repository
 
 ```bash
@@ -101,14 +108,23 @@ git clone <repo-url>
 cd pynventory
 ```
 
-### 3.2 Make sure you are on master
+### 3.2 Branch guide
+
+The main branch of the repository is master.
+
+Development work takes place from development.
 
 ```bash
 git checkout master
 git pull origin master
 ```
 
-Always start new work from an up-to-date `master`.
+```bash
+git checkout development
+git pull origin development
+```
+
+Always start new work from an up-to-date `development`.
 
 ### 3.3 Create a branch
 
