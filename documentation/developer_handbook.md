@@ -125,6 +125,15 @@ git pull origin development
 ```
 
 Always start new work from an up-to-date `development`.
+```bash
+git fetch
+git pull
+```
+
+Useful commands
+```bash
+git status
+```
 
 ### 3.3 Create a branch
 
@@ -184,6 +193,8 @@ git push origin your-branch
 ### 3.8 Open a pull request
 
 Go to the repository on GitHub. You will see a banner suggesting you open a pull request for your recently pushed branch. Click it.
+
+### ALWAYS SELECT DEVELOP TO RECEIVE CHANGES FROM YOUR BRANCH
 
 Fill in the description (see [section 8](#8-pull-request-expectations)) and submit.
 
