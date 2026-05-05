@@ -6,7 +6,7 @@ How we work together on this project. Keep it simple, keep it friendly.
 
 ## Branch-based development
 
-All work happens on branches. Never code directly on `master`.
+All work happens on branches. Never code directly on `master` or `development`. 
 
 Create a branch for each task:
 
@@ -20,9 +20,9 @@ When the work is done, open a pull request to merge it back.
 
 ---
 
-## No direct pushes to master
+## No direct pushes to master or development
 
-`master` stays clean and stable. Every change goes through a pull request.
+`master` stays clean and stable. Every change goes through a pull request. Development happens on development.
 
 - Push your branch to the remote.
 - Open a pull request.
