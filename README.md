@@ -1,14 +1,37 @@
 # Pynventory
 
-A small inventory tracker built with python and sqlite, nothing fancy.
+A small inventory tracker built with python and sqlite. A learning project where you gain real-world collaboration experience by building something together — branches, pull requests, code reviews, and a shared codebase, just like a real dev team.
 
-## Why?
+## What this project is about
 
-Let's learn OOP (object oriented programming) and general programming together.
-Practice good developer skills, git, databases, python and more to come.
-Made to simulate real work skills.
+Pynventory is a terminal-based tool that tracks products you buy and sell, calculates profit, and stores everything in a local sqlite database.
+
+But more importantly, it is a sandbox for practicing software development skills. The app itself is simple on purpose — the real value is in how we work on it together.
+
+## What you gain
+
+- **OOP in practice** — classes, methods, `self`, and how to structure code across multiple files.
+- **SQLite experience** — real database connections, queries, and schema design.
+- **Git workflow** — branching, committing, pushing, pulling, and opening pull requests.
+- **Code review** — both giving and receiving constructive feedback.
+- **Collaboration skills** — discussing features before coding, working from a shared todo list, and communicating in a team setting.
+- **Something for your portfolio** — a real project with a commit history that shows you can work with others.
+
+## What you can expect
+
+- **A low-pressure environment** — this is for learning. Mistakes are expected and part of the process.
+- **Constructive feedback** — reviews focus on the code, not the person.
+- **A growing codebase** — features get added over time, so there is always something to work on.
+- **Real dev tooling** — ruff for formatting/linting, git for version control, and a branch-based workflow.
+- **Guidance** — the collaboration guidelines and developer handbook walk you through everything from setup to pull requests.
 
 Read the collaboration guidelines and developer handbook to understand the ways of working on this project.
+
+## Discord
+
+We use Discord for discussing ideas, asking questions, reporting bugs, and sharing work in progress. Check in before coding anything bigger than a small fix.
+
+Ask the project owner for an invite to the server. Once you are in, check the pinned posts in the development and issues forums for posting guides.
 
 ## What it does
 
