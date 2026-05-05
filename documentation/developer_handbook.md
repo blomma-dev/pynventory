@@ -22,13 +22,31 @@ git --version
 
 ## 2. Dev environment setup
 
-### Create a virtual environment
+Read below why we use virtual environments
+
+[Why do we use virtual environments?](https://pythonforengineers.com/blog/python-tip-always-use-a-virtual-environment/index.html)
+
+### Create a virtual environment in project root folder
 
 ```bash
 python -m venv .venv
 ```
+OR
+
+```bash
+python3 -m venv .venv
+```
 
 This creates a `.venv` folder in the project root. It is already in `.gitignore` so it will never be committed.
+
+### Allow creation of virtual environments (Windows only)
+Run PowerShell as admin and enter:
+
+```
+set-executionpolicy remotesigned
+```
+
+
 
 ### Activate the virtual environment
 
@@ -59,6 +77,8 @@ deactivate
 ```
 
 ### Install dependencies
+
+[Click here to read about dependencies](https://realpython.com/ref/glossary/dependency/)
 
 Install the project's dev tools:
 
@@ -169,6 +189,10 @@ git pull origin master
 ---
 
 ## 4. Git workflow — quick reference
+
+Read below more about branches
+
+[Why we use branches?](https://www.w3schools.com/git/git_branch.asp)
 
 ```bash
 # Start fresh
@@ -332,6 +356,8 @@ Avoid leaving commented-out code. If it is not used, delete it.
 
 ## 8. Pull request expectations
 
+[Click here to read about pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+
 When you open a pull request, include:
 
 1. **What you did** — a short summary of the change.
@@ -361,6 +387,8 @@ Automated tests may be added later. When they are, they must pass before merging
 ---
 
 ## 10. Database notes
+
+The project uses SQLite for now as database, read  more about SQLite: [click here to read more about SQLite](https://www.sqlitetutorial.net/what-is-sqlite/).
 
 - The database file is `products.db`. It is already in `.gitignore`. Do not commit it.
 - To create a fresh database, run:
