@@ -1,3 +1,0 @@
-# Collaboration guidelines
-
-## more to come...
