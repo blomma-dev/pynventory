@@ -1,6 +1,6 @@
 # Pynventory
 
-A small inventory tracker built with python and sqlite. A learning project where you gain real-world collaboration experience by building something together — branches, pull requests, code reviews, and a shared codebase, just like a real dev team.
+A small inventory tracker built with python and sqlite. A learning project where you gain real-world collaboration experience by building something together — branches, pull requests, code reviews, and a shared codebase, just like a real dev team. No AI for code generation.
 
 ## What this project is about
 
