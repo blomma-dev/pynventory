@@ -194,7 +194,7 @@ git push origin your-branch
 
 Go to the repository on GitHub. You will see a banner suggesting you open a pull request for your recently pushed branch. Click it.
 
-### ALWAYS SELECT DEVELOP TO RECEIVE CHANGES FROM YOUR BRANCH
+#### ALWAYS SELECT DEVELOP TO RECEIVE CHANGES FROM YOUR BRANCH
 
 Fill in the description (see [section 8](#8-pull-request-expectations)) and submit.
 
