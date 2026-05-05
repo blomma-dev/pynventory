@@ -125,6 +125,15 @@ git pull origin development
 ```
 
 Always start new work from an up-to-date `development`.
+```bash
+git fetch
+git pull
+```
+
+Useful commands
+```bash
+git status
+```
 
 ### 3.3 Create a branch
 
