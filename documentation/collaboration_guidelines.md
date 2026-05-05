@@ -16,6 +16,8 @@ git checkout -b "feature/your-new-feature"
 
 When the work is done, open a pull request to merge it back.
 
+[Why we use branches?](https://www.w3schools.com/git/git_branch.asp)
+
 ---
 
 ## No direct pushes to master
