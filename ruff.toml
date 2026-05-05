@@ -1,0 +1,12 @@
+# Ruff configuration for pynventory
+# Used by Zed (default), VSCode (Ruff extension), and the CLI.
+
+target-version = "py38"
+
+[lint]
+select = ["E", "F", "W"]       # pycodestyle errors, pyflakes, warnings
+ignore = ["E501"]               # line-length handled by the formatter
+
+[format]
+quote-style = "double"
+indent-style = "space"
