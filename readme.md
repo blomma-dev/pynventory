@@ -2,6 +2,14 @@
 
 A small inventory tracker built with python and sqlite, nothing fancy.
 
+## Why?
+
+Let's learn OOP (object oriented programming) and general programming together.
+Practice good developer skills, git, databases, python and more to come.
+Made to simulate real work skills.
+
+Read the collaboration guidelines and developer handbook to understand the ways of working on this project.
+
 ## What it does
 
 Keeps track of products you buy and sell. Calculates profit for each item automatically.
@@ -24,18 +32,18 @@ where the actual commands live:
 - **add_item** — asks for each field one by one. it does not let you skip required fields or enter garbage. keeps asking until the input makes sense. only when everything checks out does it create the `Product` object and save it to the database. also shows you the assigned id and profit after saving.
 - **list_items** — pulls every product from the database and prints them. if the table is empty, it just says so.
 - **del_item** — removes product by ID. verification safeguard.
-- - **modify_item** — updates product by id, field selectable
+- **modify_item** — updates product by id, field selectable
 
 ## commands
 
-| command | what it does                       |
-|---------|------------------------------------|
-| `add` | add a new product to the inventory |
-| `list` | show all products                  |
-| `help` | print the list of commands         |
-| `exit` | close the program                  |
-| `del` | remove product by ID               |
-| `modify` | updates product by ID              |
+| command | what it does                              |
+|---------|-------------------------------------------|
+| `add`   | add a new product to the inventory        |
+| `list`  | show all products                         |
+| `help`  | print the list of commands                |
+| `exit`  | close the program                         |
+| `del`   | remove product by ID                      |
+| `mod`   | update a product's fields by ID           |
 
 ## quick start
 
@@ -50,6 +58,11 @@ python database.py
 ```
 
 to init the database
+
+## docs
+
+- `collaboration_guidelines.md` — how we work together, branch rules, code review, merge policy.
+- `developer_handbook.md` — dev environment setup, git workflow tutorial, code style, pull request expectations.
 
 ## notes
 
