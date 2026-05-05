@@ -26,7 +26,7 @@ Read below why we use virtual environments
 
 [Why do we use virtual environments?](https://pythonforengineers.com/blog/python-tip-always-use-a-virtual-environment/index.html)
 
-### Create a virtual environment
+### Create a virtual environment in project root folder
 
 ```bash
 python -m venv .venv
@@ -38,6 +38,15 @@ python3 -m venv .venv
 ```
 
 This creates a `.venv` folder in the project root. It is already in `.gitignore` so it will never be committed.
+
+### Allow creation of virtual environments (Windows only)
+Run PowerShell as admin and enter:
+
+```
+set-executionpolicy remotesigned
+```
+
+
 
 ### Activate the virtual environment
 
