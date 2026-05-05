@@ -4,7 +4,7 @@ stuff already working and what still needs doing.
 
 ## done
 
-- sqlite database setup with product table
+- SQLite database setup with product table
 - product model with profit auto-calculated on creation
 - add command with validation (no empty fields, no negative numbers, type must be p or d)
 - list command that prints every product
@@ -51,14 +51,14 @@ these are the essentials that make the inventory actually usable.
 
 these are long-term options, pick one if the project ever grows past the terminal.
 
-- [ ] **gui version** — desktop interface with tkinter, forms and buttons, product table view.
+- [ ] **GUI version** — desktop interface with TKinter, forms and buttons, product table view.
 - [ ] **web version** — rebuild with flask, web forms, browser display.
 
 ## code quality
 
 - [ ] **simple tests** — so refactoring later does not break things.
 - [ ] **better error messages** — tell the user exactly what went wrong.
-- [ ] **unique id generation** — sqlite already handles this, but good to keep in mind if storage ever changes.
+- [ ] **unique id generation** — SQLite already handles this, but good to keep in mind if storage ever changes.
 
 ## learning goals
 
@@ -66,7 +66,7 @@ check these off as you build:
 
 - [ ] understand how classes and objects work
 - [ ] know how methods use self
-- [ ] be comfortable with sqlite connections and cursors
+- [ ] be comfortable with SQLite connections and cursors
 - [ ] know how to validate input and keep asking until it is right
 - [ ] understand how to structure a small app across multiple files
 - [ ] know how to expand a project cleanly without making a mess
