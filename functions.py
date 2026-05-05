@@ -1,15 +1,9 @@
 from database import get_connection
 from models import Product
+from helpers import print_options
 
 # create a list of commands
 available_commands = ["add", "del", "mod", "list", "help", "exit"]
-
-
-def print_options(title, options):
-    print(title)
-    for option in options:
-        print(f"- {option}")
-    print()
 
 
 def is_non_negative_number(value):

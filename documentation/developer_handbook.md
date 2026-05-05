@@ -196,7 +196,7 @@ Go to the repository on GitHub. You will see a banner suggesting you open a pull
 
 #### ALWAYS SELECT DEVELOP TO RECEIVE CHANGES FROM YOUR BRANCH
 
-Fill in the description (see [section 8](#8-pull-request-expectations)) and submit.
+Fill in the description (see [section 8](#8-pull-request-expectations)) and make sure to select a reviewer for the PR. Once ready, click submit.
 
 ### 3.9 Address review feedback
 
