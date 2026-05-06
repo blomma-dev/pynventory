@@ -183,6 +183,10 @@ def add_item():
         # closing the connection
         conn.close()
 
+    except OverflowError:
+        print("\nError: A numerical value in product has reached max size. Aborted.")
+        conn.close()
+
     except KeyboardInterrupt:
         print("\n")
         conn.close()    
@@ -418,6 +422,10 @@ def modify_item():
             # commit changes and stay in modify mode
             conn.commit()
             print("Updated successfully.")
+
+    except OverflowError:
+        print("\nError: A numerical value in product has reached max size. Aborted.")
+        conn.close()
 
     except KeyboardInterrupt:
         print("\n")
