@@ -2,8 +2,9 @@
 <!-- Briefly describe what this PR does. 2–3 sentences. -->
 ## Why
 <!-- What problem does this solve? Why is it needed? -->
-## Linked todo item
-<!-- If this relates to an item in documentation/todo.md, link or mention it here. -->
+## Linked Github Issue item
+<!-- If this relates to an issue item, link it here. -->
+[Link title](https://github.com/blomma-dev/pynventory/issues)
 ## How I tested
 <!-- What did you try to make sure it works? Manual steps, edge cases, etc. -->
 ## Self-review checklist
