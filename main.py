@@ -14,7 +14,7 @@ def main():
 
     print("Welcome to Pynventory!\n")
     print('Type "help" to see available commands.\n')
-    try: 
+    try:
         while True:
             command = input("Enter command: ").strip().lower()
 

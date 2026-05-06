@@ -188,12 +188,12 @@ def add_item():
         conn.close()
 
     except ValueError:
-        print("\nError: The provided value is not accepted.") 
+        print("\nError: The provided value is not accepted.")
         conn.close()
 
     except KeyboardInterrupt:
         print("\n")
-        conn.close()    
+        conn.close()
 
 # function to delete a product by id
 def del_item():
