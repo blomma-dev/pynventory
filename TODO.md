@@ -1,8 +1,21 @@
-# todo
+# ToDo
 
-stuff already working and what still needs doing.
+Currently the application works only via the terminal, and this is fine for now.
+To improve the program overall, let's think about the scope of the project below
 
-## done
+However, in the future it would be feasible to for example:
+
+### Future plans
+- Access the program via a web-browser (Django, React, Vue etc. ?)
+- The production software (should) could run in docker?
+- Test framework for testing the software (pytest/robot/?)
+- For multi-user access SQLite is not feasible, explore other DB:s
+- API for connecting front-end and back-end (Django?)
+
+Suggestions are welcome, and users should bring up ideas as [Issues on GitHub](https://github.com/blomma-dev/pynventory/issues).
+
+
+## Currently done
 
 - SQLite database setup with product table
 - product model with profit auto-calculated on creation
@@ -13,68 +26,55 @@ stuff already working and what still needs doing.
 - delete product by id
 - modify product by id and field in product
 - collaboration guidelines and developer handbook documentation
+- barebones error handling
+- delete a product by id. asks for confirmation so you do not wipe something by accident.
+- modify fields of an existing product (`mod` command). ask for id first, show current values, let user overwrite. supports list/help/exit inside the modify sub-menu.
 
-## core features to add
+## Core features to add
+These are the essentials that make the inventory actually usable.
 
-these are the essentials that make the inventory actually usable.
-
-- [x] **delete** — remove a product by id. asks for confirmation so you do not wipe something by accident.
-- [x] **modify** — update fields of an existing product (`mod` command). ask for id first, show current values, let user overwrite. supports list/help/exit inside the modify sub-menu.
+- [ ] **better dev experience** — in ```functions.py``` to their own respective main files take a look at ```helpers.py``` for example.
+- [ ] **sell products** — make the system actually usable by implementing a feature that reflects to the database if stock has been sold.
 - [ ] **search** — find products by name or brand. partial matches, case insensitive.
 - [ ] **validate sell price** — warn or block if sell price is lower than buy price.
 
-## useful additions
+## Useful additions
 
-- [ ] **better dev experience** — logic of code into more modular and smaller bits / separate files.
 - [ ] **inventory value report** — total value of all stock, total potential profit.
 - [ ] **filter by category** — list only products in a chosen category.
 - [ ] **sort list** — sort by brand, category, profit, or price.
 - [ ] **low-stock alerts** — only makes sense if quantity tracking is added to the model.
 - [ ] **better formatted output** — align columns, cleaner spacing.
 - [ ] **edit product details** — similar to modify, maybe combined.
-- [ ] **finalize collaboration guidelines** - can be found in it's own branch, write the guidelines and more.
 
-## data and export
+## Data and export
 
 - [ ] **export to csv** — dump inventory to a file for spreadsheets.
 - [ ] **date added field** — track when a product was first entered.
 - [ ] **last updated field** — track when a product was last modified.
 
-## more advanced stuff
+## More advanced stuff
 
 - [ ] **supplier info** — add a supplier name or a separate supplier table.
 - [ ] **restock history** — log every time stock increases with date and quantity.
 - [ ] **sales / stock movement history** — log decreases too, so you know what moved.
 - [ ] **stock quantity tracking** — right now there is no quantity field. adding this enables low-stock alerts and movement history.
 
-## interface ideas
+## Interface ideas
 
 these are long-term options, pick one if the project ever grows past the terminal.
 
-- [ ] **GUI version** — desktop interface with TKinter, forms and buttons, product table view.
 - [ ] **web version** — rebuild with flask, web forms, browser display.
 
-## code quality
+## Code quality
 
 - [ ] **simple tests** — so refactoring later does not break things.
 - [ ] **better error messages** — tell the user exactly what went wrong.
-- [ ] **unique id generation** — SQLite already handles this, but good to keep in mind if storage ever changes.
+- [ ] **unique id generation?** — SQLite already handles this, but good to keep in mind if storage ever changes.
 
-## learning goals
 
-check these off as you build:
+## Rules for building
 
-- [ ] understand how classes and objects work
-- [ ] know how methods use self
-- [ ] be comfortable with SQLite connections and cursors
-- [ ] know how to validate input and keep asking until it is right
-- [ ] understand how to structure a small app across multiple files
-- [ ] know how to expand a project cleanly without making a mess
+### [Developer handbook](https://github.com/blomma-dev/pynventory/wiki/Developer-handbook)
 
-## rules for building
-
-- keep classes small and clear
-- do not add too many features at once
-- test each feature before moving on
-- refactor when code starts feeling repetitive
-- focus on understanding, not speed
+### [Collaboration guidelines](https://github.com/blomma-dev/pynventory/wiki/Collaboration-guidelines)

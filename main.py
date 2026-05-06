@@ -14,27 +14,28 @@ def main():
 
     print("Welcome to Pynventory!\n")
     print('Type "help" to see available commands.\n')
+    try:
+        while True:
+            command = input("Enter command: ").strip().lower()
 
-    while True:
-        command = input("Enter command: ").strip().lower()
-
-        if command == "add":
-            add_item()
-        elif command == "list":
-            list_items()
-        elif command == "help":
-            print(*available_commands, sep=", ")
-            print()
-        elif command == "exit":
-            print("Exiting Pynventory.")
-            break
-        elif command == "del":
-            del_item()
-        elif command == "mod":
-            modify_item()
-        else:
-            list_commands()
-
+            if command == "add":
+                add_item()
+            elif command == "list":
+                list_items()
+            elif command == "help":
+                print(*available_commands, sep=", ")
+                print()
+            elif command == "exit":
+                print("Exiting Pynventory.")
+                break
+            elif command == "del":
+                del_item()
+            elif command == "mod":
+                modify_item()
+            else:
+                list_commands()
+    except KeyboardInterrupt:
+        print("\nExiting Pynventory.")
 
 if __name__ == "__main__":
     main()
