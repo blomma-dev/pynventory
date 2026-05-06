@@ -107,11 +107,15 @@ def add_item():
 
     # asking for weight until a valid number is entered
     while True:
-        value = input("Enter weight (g): ").strip()
-        if not is_non_negative_number(value):
-            print("Weight must be a number.\n")
-            continue
-        weight = int(value)
+        if item_type == "digital":
+            weight = 0
+            break
+        else:
+            value = input("Enter weight (g): ").strip()
+            if not is_non_negative_number(value):
+                print("Weight must be a number.\n")
+                continue
+            weight = int(value)
         break
 
     # asking for stock until a valid number is entered
