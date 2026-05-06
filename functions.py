@@ -187,6 +187,10 @@ def add_item():
         print("\nError: A numerical value in product has reached max size. Aborted.")
         conn.close()
 
+    except ValueError:
+        print("\nError: The provided value is not accepted.") 
+        conn.close()
+
     except KeyboardInterrupt:
         print("\n")
         conn.close()    
@@ -425,6 +429,10 @@ def modify_item():
 
     except OverflowError:
         print("\nError: A numerical value in product has reached max size. Aborted.")
+        conn.close()
+
+    except ValueError:
+        print("\nError: The provided number value is not accepted.")
         conn.close()
 
     except KeyboardInterrupt:
