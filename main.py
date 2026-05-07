@@ -1,4 +1,5 @@
 from database import create_table
+from helpers import show_help 
 from functions import (
     add_item,
     available_commands,
@@ -23,8 +24,7 @@ def main():
             elif command == "list":
                 list_items()
             elif command == "help":
-                print(*available_commands, sep=", ")
-                print()
+                show_help()
             elif command == "exit":
                 print("Exiting Pynventory.")
                 break
