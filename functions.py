@@ -1,6 +1,6 @@
 from database import get_connection
 from models import Product
-from helpers import print_options
+from helpers import print_options, modify_show_help
 
 # create a list of commands
 available_commands = ["add", "del", "mod", "list", "help", "exit"]
@@ -245,20 +245,6 @@ def del_item():
 # function to modify a product by id and field
 def modify_item():
     try:
-        available_to_update = [
-            "category",
-            "brand",
-            "name",
-            "buy price",
-            "sell price",
-            "tax",
-            "weight",
-            "stock",
-            "list",
-            "exit",
-            "help",
-        ]
-
         # connecting to sqlite database
         conn = get_connection()
         # creating a cursor object using the cursor() method
@@ -275,7 +261,7 @@ def modify_item():
                 continue
 
             if row_to_update == "help":
-                print_options("Available options:", available_to_update)
+                modify_show_help()
                 continue
 
             if row_to_update == "exit":
@@ -308,7 +294,7 @@ def modify_item():
                 return
 
             if command == "help":
-                print_options("Available options:", available_to_update)
+                modify_show_help()
                 continue
 
             if command == "list":
@@ -420,7 +406,8 @@ def modify_item():
                 )
 
             else:
-                print_options("Unknown option. Available options:", available_to_update)
+                print("Unknown option.\n")
+                modify_show_help() 
                 continue
 
             # commit changes and stay in modify mode
