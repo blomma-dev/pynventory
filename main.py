@@ -1,7 +1,7 @@
 from database import create_table
+from helpers import main_show_help
 from functions import (
     add_item,
-    available_commands,
     del_item,
     list_commands,
     list_items,
@@ -23,8 +23,7 @@ def main():
             elif command == "list":
                 list_items()
             elif command == "help":
-                print(*available_commands, sep=", ")
-                print()
+                main_show_help()
             elif command == "exit":
                 print("Exiting Pynventory.")
                 break
