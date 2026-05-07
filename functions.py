@@ -407,7 +407,7 @@ def modify_item():
 
             else:
                 print("Unknown option.\n")
-                modify_show_help() 
+                modify_show_help()
                 continue
 
             # commit changes and stay in modify mode

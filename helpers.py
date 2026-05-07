@@ -11,10 +11,10 @@ def main_show_help():
         mod  - Modify product data
         list - List all product data
         help - Show help
-        exit - Exit the program 
+        exit - Exit the program
     """)
 
-# modify menu help function 
+# modify menu help function
 def modify_show_help():
     print("""
     Modifiable columns:
@@ -29,7 +29,7 @@ def modify_show_help():
 
     Commands:
         list - List all product data
-        help - Show help 
+        help - Show help
         exit - Exit to main menu
     """)
 

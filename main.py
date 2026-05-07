@@ -1,8 +1,7 @@
 from database import create_table
-from helpers import main_show_help 
+from helpers import main_show_help
 from functions import (
     add_item,
-    available_commands,
     del_item,
     list_commands,
     list_items,
