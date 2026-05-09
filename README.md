@@ -2,9 +2,22 @@
 
 Pynventory is a collaborative, invite-only learning project where contributors can build software together, practice real development workflow, and gain useful work skills.
 
-The application mimics an inventory management system, and gives contributors a place to practice Python, branching, pull requests, code reviews, and team collaboration. It starts simple on purpose so people can focus on learning and growing in a shared project.
+The application mimics an inventory management system, and gives contributors a place to practice development, branching, pull requests, code reviews, and team collaboration. It starts simple on purpose so people can focus on learning and growing in a shared project.
 
-The project scope is not locked, and a front-end is planned for near future, as well database related improvements. Collaborators have the chance to participate in steering the project in the direction wished, and choosing what to participate in.
+## Current project phase
+
+The current focus is improving the terminal-based inventory app before expanding into a complete full-stack version.
+
+Near-term priorities include:
+
+- tracking product quantities
+- selling products and reducing stock
+- searching products by name or brand
+- improving list output formatting
+- adding basic automated tests
+- keeping the contributor workflow simple and beginner-friendly
+- reworking the database
+- and more to come!
 
 ## Getting started
 
