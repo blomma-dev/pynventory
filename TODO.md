@@ -14,57 +14,53 @@ However, in the future it would be feasible to for example:
 
 Suggestions are welcome, and users should bring up ideas as [Issues on GitHub](https://github.com/blomma-dev/pynventory/issues).
 
+## Roadmap
 
-## Currently done
+The project is intentionally simple right now. The goal is to improve the CLI inventory app first, then move toward larger architecture changes later.
 
-- SQLite database setup with product table
-- product model with profit auto-calculated on creation
-- add command with validation (no empty fields, no negative numbers, type must be p or d)
-- list command that prints every product
-- help and exit commands
-- basic command loop in main.py
-- delete product by id
-- modify product by id and field in product
-- collaboration guidelines and developer handbook documentation
-- barebones error handling
-- delete a product by id. asks for confirmation so you do not wipe something by accident.
-- modify fields of an existing product (`mod` command). ask for id first, show current values, let user overwrite. supports list/help/exit inside the modify sub-menu.
+### Phase 1: Make the CLI inventory useful
 
-## Core features to add
-These are the essentials that make the inventory actually usable.
+These are the next core features that make the inventory more practical.
 
-- [ ] **better dev experience** — in ```functions.py``` to their own respective main files take a look at ```helpers.py``` for example.
-- [ ] **sell products** — make the system actually usable by implementing a feature that reflects to the database if stock has been sold.
-- [ ] **search** — find products by name or brand. partial matches, case insensitive.
-- [ ] **validate sell price** — warn or block if sell price is lower than buy price.
+- [ ] **stock quantity tracking** - add quantity to products so inventory levels can be tracked.
+- [ ] **sell products** - reduce stock when products are sold.
+- [ ] **search** - find products by name or brand using partial, case-insensitive matches.
+- [ ] **validate sell price** - warn or block if sell price is lower than buy price.
+- [ ] **better formatted output** - align columns and improve spacing when listing products.
 
-## Useful additions
+### Phase 2: Improve safety and contributor confidence
 
-- [ ] **inventory value report** — total value of all stock, total potential profit.
-- [ ] **filter by category** — list only products in a chosen category.
-- [ ] **sort list** — sort by brand, category, profit, or price.
-- [ ] **low-stock alerts** — only makes sense if quantity tracking is added to the model.
-- [ ] **better formatted output** — align columns, cleaner spacing.
-- [ ] **edit product details** — similar to modify, maybe combined.
+These make the project easier to work on without breaking existing behavior.
 
-## Data and export
+- [ ] **simple tests** - add basic automated tests for product creation, validation, and database operations.
+- [ ] **better error messages** - tell the user clearly what went wrong and how to fix it.
+- [ ] **cleaner developer experience** - keep files focused and easy to understand as the project grows.
+- [ ] **database reset guidance** - document how to safely create or reset local development data.
 
-- [ ] **export to csv** — dump inventory to a file for spreadsheets.
-- [ ] **date added field** — track when a product was first entered.
-- [ ] **last updated field** — track when a product was last modified.
+### Phase 3: Add useful inventory features
 
-## More advanced stuff
+These features build on quantity tracking and make the app more realistic.
 
-- [ ] **supplier info** — add a supplier name or a separate supplier table.
-- [ ] **restock history** — log every time stock increases with date and quantity.
-- [ ] **sales / stock movement history** — log decreases too, so you know what moved.
-- [ ] **stock quantity tracking** — right now there is no quantity field. adding this enables low-stock alerts and movement history.
+- [ ] **inventory value report** - show total stock value and total potential profit.
+- [ ] **filter by category** - list only products in a chosen category.
+- [ ] **sort list** - sort by brand, category, profit, price, or quantity.
+- [ ] **low-stock alerts** - show products where quantity is below a chosen limit.
+- [ ] **export to CSV** - export inventory data for use in spreadsheets.
+- [ ] **date added field** - track when a product was first entered.
+- [ ] **last updated field** - track when a product was last modified.
 
-## Interface ideas
+### Phase 4: Larger future ideas
 
-these are long-term options, pick one if the project ever grows past the terminal.
+These should wait until the CLI behavior and data model are clearer.
 
-- [ ] **web version** — rebuild with flask, web forms, browser display.
+- [ ] **supplier info** - add supplier details to products or a separate supplier table.
+- [ ] **restock history** - log when stock increases.
+- [ ] **sales / stock movement history** - log stock decreases and sales.
+- [ ] **API layer** - expose inventory functionality for a future front end.
+- [ ] **web version** - build a browser-based interface using a framework chosen by the team.
+- [ ] **production environment** - explore Docker or another deployment approach if the project grows.
+- [ ] **database upgrade** - explore alternatives to SQLite if multi-user access becomes necessary.
+
 
 ## Code quality
 
