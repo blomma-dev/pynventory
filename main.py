@@ -1,8 +1,8 @@
 from database import create_table
-from helpers import main_show_help, list_commands
+from helpers import main_help_dialog, list_commands
 from db_operations import (
     add_item,
-    del_item,
+    delete_item,
     list_items,
     modify_item,
 )
@@ -21,12 +21,12 @@ def main():
             elif command == "list":
                 list_items()
             elif command == "help":
-                main_show_help()
+                main_help_dialog()
             elif command == "exit":
                 print("Exiting Pynventory.")
                 break
             elif command == "del":
-                del_item()
+                delete_item()
             elif command == "mod":
                 modify_item()
             else:

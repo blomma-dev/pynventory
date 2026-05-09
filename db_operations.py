@@ -1,6 +1,6 @@
 from database import get_connection
 from models import Product
-from helpers import modify_show_help, delete_help_dialog, print_product_brief
+from helpers import modify_help_dialog, delete_help_dialog, print_product_brief
 from validators import is_non_negative_number
 
 # function to add a new product
@@ -165,7 +165,7 @@ def add_item():
         conn.close()
 
 # function to delete a product by id
-def del_item():
+def delete_item():
     try:
         # connecting to sqlite database
         conn = get_connection()
@@ -247,7 +247,7 @@ def modify_item():
                 continue
 
             if row_to_update == "help":
-                modify_show_help()
+                modify_help_dialog()
                 continue
 
             if row_to_update == "exit":
@@ -280,7 +280,7 @@ def modify_item():
                 return
 
             if command == "help":
-                modify_show_help()
+                modify_help_dialog()
                 continue
 
             if command == "list":
@@ -393,7 +393,7 @@ def modify_item():
 
             else:
                 print("Unknown option.\n")
-                modify_show_help()
+                modify_help_dialog()
                 continue
 
             # commit changes and stay in modify mode

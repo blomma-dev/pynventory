@@ -3,7 +3,7 @@
 # remember to import the function at functions.py
 
 # main menu help function
-def main_show_help():
+def main_help_dialog():
     print("""
     Available commands:
         add  - Add products to inventory database
@@ -15,7 +15,7 @@ def main_show_help():
     """)
 
 # modify menu help function
-def modify_show_help():
+def modify_help_dialog():
     print("""
     Modifiable columns:
         category
@@ -50,7 +50,7 @@ available_commands = ["add", "del", "mod", "list", "help", "exit"]
 # create function to list commands
 def list_commands():
     print("Incorrect command.")
-    main_show_help()
+    main_help_dialog()
 
 def print_options(title, options):
     print(title)
