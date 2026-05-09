@@ -1,7 +1,7 @@
-from database import get_connection
-from models import Product
-from helpers import modify_help_dialog, delete_help_dialog, print_product_brief
-from validators import is_non_negative_number
+from pynventory.database import get_connection
+from pynventory.models import Product
+from pynventory.helpers import modify_help_dialog, delete_help_dialog, print_product_brief
+from pynventory.validators import is_non_negative_number
 
 # function to add a new product
 def add_item():

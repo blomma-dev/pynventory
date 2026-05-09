@@ -2,13 +2,19 @@
 
 Pynventory is a collaborative, invite-only learning project built around a small inventory management application.
 
-The goal is to practice real software development workflows in a supportive environment: software development, Git branches, GitHub Issues, pull requests, code review, releases, and teamwork.
+The goal is to practice real software development workflows in a supportive environment: softawre developmen, Git branches, GitHub Issues, pull requests, code review, releases, and teamwork.
 
 The application currently runs in the terminal and uses SQLite for local data storage. It starts simple on purpose so contributors can focus on learning, improving the app step by step, and working together.
 
 ## Quick start
 
 The setup guide is available here: [Local development setup](https://github.com/blomma-dev/pynventory/wiki/Local-development-setup).
+
+Run the app from the repository root with:
+
+```bash
+python -m pynventory.main
+```
 
 ## Current project phase
 
@@ -41,7 +47,7 @@ Before opening a pull request:
 - link the pull request to a GitHub Issue
 - test your change manually
 - run Ruff if you changed Python code
-- make sure `products.db` is not included in your commit
+- make sure `data/products.db` is not included in your commit
 
 ## Project documentation
 
@@ -67,6 +73,6 @@ Discord is used for quick communication, asking questions, and discussing work i
 
 ## Local database note
 
-Pynventory uses a local SQLite database file named `products.db`.
+Pynventory uses a local SQLite database file named `data/products.db`.
 
 This file is local development data and should not be included in pull requests.

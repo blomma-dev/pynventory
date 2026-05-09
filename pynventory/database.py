@@ -1,9 +1,15 @@
 import sqlite3
+from pathlib import Path
+
+
+DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+DATABASE_PATH = DATA_DIR / "products.db"
 
 
 # function to create and return a database connection
 def get_connection():
-    return sqlite3.connect("products.db")
+    DATA_DIR.mkdir(exist_ok=True)
+    return sqlite3.connect(DATABASE_PATH)
 
 
 # function to create the product table if it does not exist
