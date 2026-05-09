@@ -4,7 +4,7 @@ Pynventory is a collaborative, invite-only learning project where contributors c
 
 The application mimics an inventory management system, and gives contributors a place to practice Python, branching, pull requests, code reviews, and team collaboration. It starts simple on purpose so people can focus on learning and growing in a shared project.
 
-The project scope is not locked, and a front-end is planned for near future, as well database related improvements. Collaborators have the change to participate in steering the project in the direction wished, and choosing what to participate in.
+The project scope is not locked, and a front-end is planned for near future, as well database related improvements. Collaborators have the chance to participate in steering the project in the direction wished, and choosing what to participate in.
 
 ## Getting started
 
