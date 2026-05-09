@@ -1,7 +1,7 @@
 ---
 name: Task / Chore
 about: Task / chore / refactor template
-title: "Enter your title here..."
+title: "Describe the task briefly"
 labels: 'chore'
 assignees: ''
 
