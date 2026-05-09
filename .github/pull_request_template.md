@@ -5,7 +5,7 @@
 <!-- What problem does this solve? Why is it needed? -->
 
 ## Linked GitHub issue
-<!-- Required. Example Use: Closes #45 -->
+<!-- Required. Example Use: Closes #number -->
 Closes #
 
 ## How I tested
