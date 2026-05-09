@@ -20,6 +20,13 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
+**Acceptance criteria**
+This issue can be considered done when:
+- [ ] The bug can no longer be reproduced
+- [ ] The expected behavior works
+- [ ] Existing related behavior still works
+- [ ] The fix has been tested manually
+
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
