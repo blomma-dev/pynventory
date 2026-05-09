@@ -37,7 +37,7 @@ def modify_show_help():
 def delete_help_dialog():
     print("""
     List product ID's with 'list' command.
-    
+
     Commands:
         list - List all product data
         help - Show help

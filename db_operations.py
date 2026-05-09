@@ -173,7 +173,7 @@ def del_item():
         cursor = conn.cursor()
         print('Type "list" to show products, "exit" to close, "help" for options.')
 
-        # ask user for row id to delete        
+        # ask user for row id to delete
         while True:
             row_to_delete = input("Enter product ID to delete: ")
 
