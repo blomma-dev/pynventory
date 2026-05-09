@@ -1,6 +1,6 @@
 from database import get_connection
 from models import Product
-from helpers import modify_show_help, print_product_brief
+from helpers import modify_show_help, delete_help_dialog, print_product_brief
 from validators import is_non_negative_number
 
 # function to add a new product
@@ -171,9 +171,26 @@ def del_item():
         conn = get_connection()
         # creating a cursor object using the cursor() method
         cursor = conn.cursor()
+        print('Type "list" to show products, "exit" to close, "help" for options.')
 
-        # ask user for row id to delete
-        row_to_delete = input("Enter product ID to delete: ")
+        # ask user for row id to delete        
+        while True:
+            row_to_delete = input("Enter product ID to delete: ")
+
+            if row_to_delete == "list":
+                list_items()
+                continue
+
+            if row_to_delete == "help":
+                delete_help_dialog()
+                continue
+
+            if row_to_delete == "exit":
+                print("Exiting deletion mode...")
+                conn.close()
+                return
+
+            break
 
         # fetch the product by id
         cursor.execute(

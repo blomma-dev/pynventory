@@ -33,6 +33,17 @@ def modify_show_help():
         exit - Exit to main menu
     """)
 
+# delete menu help function
+def delete_help_dialog():
+    print("""
+    List product ID's with 'list' command.
+    
+    Commands:
+        list - List all product data
+        help - Show help
+        exit - Exit to main menu
+    """)
+
 # create a list of commands
 available_commands = ["add", "del", "mod", "list", "help", "exit"]
 
