@@ -1,4 +1,4 @@
-name: Require issue reference
+name: Require issue reference number in PR description
 
 on:
   pull_request:
