@@ -4,7 +4,7 @@
 <!-- What problem does this solve? Why is it needed? -->
 ## Linked Github Issue item
 <!-- If this relates to an issue item, link it here. -->
-[Link title](https://github.com/blomma-dev/pynventory/issues)
+[Link to issue](https://github.com/blomma-dev/pynventory/issues)
 ## How I tested
 <!-- What did you try to make sure it works? Manual steps, edge cases, etc. -->
 ## Self-review checklist
