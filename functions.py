@@ -378,7 +378,7 @@ def modify_item():
                 )
 
             elif command == "weight":
-                # asking for new tax percentage until a valid number is entered
+                # asking for new weight until a valid number is entered
                 while True:
                     value = input("Enter new weight: ").strip()
                     if not is_non_negative_number(value):
@@ -392,7 +392,7 @@ def modify_item():
                 )
 
             elif command == "stock":
-                # asking for new tax percentage until a valid number is entered
+                # asking for new stock amount until a valid number is entered
                 while True:
                     value = input("Enter new stock: ").strip()
                     if not is_non_negative_number(value):
