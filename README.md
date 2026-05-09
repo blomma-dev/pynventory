@@ -1,117 +1,72 @@
 # Pynventory
 
-Pynventory is a collaborative, invite-only learning project where contributors can build software together, practice real development workflow, and gain useful work skills.
+Pynventory is a collaborative, invite-only learning project built around a small inventory management application.
 
-The application mimics an inventory management system, and gives contributors a place to practice development, branching, pull requests, code reviews, and team collaboration. It starts simple on purpose so people can focus on learning and growing in a shared project.
+The goal is to practice real software development workflows in a supportive environment: software development, Git branches, GitHub Issues, pull requests, code review, releases, and teamwork.
+
+The application currently runs in the terminal and uses SQLite for local data storage. It starts simple on purpose so contributors can focus on learning, improving the app step by step, and working together.
+
+## Quick start
+
+The setup guide is available here: [Local development setup](https://github.com/blomma-dev/pynventory/wiki/Local-development-setup).
 
 ## Current project phase
 
-The current focus is improving the terminal-based inventory app before expanding into a complete full-stack version.
+The current focus is improving the terminal-based inventory app before moving toward a web interface.
 
 Near-term priorities include:
 
-- tracking product quantities
-- selling products and reducing stock
-- searching products by name or brand
-- improving list output formatting
-- adding basic automated tests
-- keeping the contributor workflow simple and beginner-friendly
-- reworking the database
-- and more to come!
+- improving inventory behavior
+- adding quantity and selling features
+- adding search and better list output
+- introducing simple automated tests
+- keeping the contributor workflow clear and beginner-friendly
 
-## Getting started
+For more detail, see the [Project roadmap](https://github.com/blomma-dev/pynventory/wiki/Project-roadmap).
 
-The full setup and contribution guide lives in the [Pynventory wiki](https://github.com/blomma-dev/pynventory/wiki).
+## Contributing
 
-Quick local setup:
+Most work starts from a GitHub Issue, happens on a branch, and is merged through a pull request.
 
-```bash
-git clone https://github.com/blomma-dev/pynventory.git
-cd pynventory
-python -m venv .venv
-```
+If you are new to the project, start here:
 
-Activate the virtual environment:
+- [Your first contribution](https://github.com/blomma-dev/pynventory/wiki/Your-first-contribution)
+- [Developer handbook](https://github.com/blomma-dev/pynventory/wiki/Developer-handbook)
+- [Collaboration guidelines](https://github.com/blomma-dev/pynventory/wiki/Collaboration-guidelines)
+- [Manual testing guide](https://github.com/blomma-dev/pynventory/wiki/Manual-testing-guide)
+- [Code style and quality guide](https://github.com/blomma-dev/pynventory/wiki/Code-style-and-quality-guide)
 
-```bash
-# Linux / macOS
-source .venv/bin/activate
+Before opening a pull request:
 
-# Windows PowerShell
-.venv\Scripts\Activate.ps1
-```
+- link the pull request to a GitHub Issue
+- test your change manually
+- run Ruff if you changed Python code
+- make sure `products.db` is not included in your commit
 
-Install development tools:
-
-```bash
-pip install -r requirements.txt
-```
-
-Run the app:
-
-```bash
-python main.py
-```
-
-For the full workflow, read the [Developer handbook](https://github.com/blomma-dev/pynventory/wiki/Developer-handbook) and [Collaboration guidelines](https://github.com/blomma-dev/pynventory/wiki/Collaboration-guidelines).
+## Project documentation
 
 The wiki is the main place for setup, contribution guidance, and project documentation.
 
-## What this project is
+Useful pages:
 
-Pynventory is more than a small Python app. It is a shared project for invited contributors who want to learn by doing, collaborate with others, and build experience that carries over into real software work.
+- [Wiki home](https://github.com/blomma-dev/pynventory/wiki)
+- [Local development setup](https://github.com/blomma-dev/pynventory/wiki/Local-development-setup)
+- [Project roadmap](https://github.com/blomma-dev/pynventory/wiki/Project-roadmap)
+- [Troubleshooting](https://github.com/blomma-dev/pynventory/wiki/Troubleshooting)
+- [FAQ](https://github.com/blomma-dev/pynventory/wiki/FAQ)
+- [Useful links](https://github.com/blomma-dev/pynventory/wiki/Useful-links)
 
-Because the project is invite-only, it can stay focused, supportive, and manageable for the people involved.
+## Project management
 
-## What you gain
+GitHub Issues are used to track tasks, bugs, questions, and planned work.
 
-By contributing to this project, you can practice:
+- [Issues](https://github.com/blomma-dev/pynventory/issues)
+- [Project board](https://github.com/users/blomma-dev/projects/2)
 
-- object-oriented programming in Python
-- working with databases and data models
-- front-end and back-end experience
-- API:s and frameworks
-- planning software features
-- using Git branches and pull requests
-- reading and giving code reviews
-- collaborating in a shared project
-- building a portfolio with real commit history
-- developing useful work skills through team-based practice that translates to work-related skills
+Discord is used for quick communication, asking questions, and discussing work in progress.
 
-## How we collaborate
+## Local database note
 
-GitHub Issues are used to track tasks, bugs, and planned work.
+Pynventory uses a local SQLite database file named `products.db`.
 
-We also use an invite-only progress tracker board (https://github.com/users/blomma-dev/projects/2) to organize progress and keep contributors aligned.
-
-Discord is mainly for direct communication with other collaborators, asking questions, and discussing work in progress.
-
-## What it does
-
-Pynventory lets you:
-
-- add products to inventory
-- list saved products
-- update existing products
-- delete products
-- store data between runs using SQLite
-- and more to come!
-
-## Commands
-
-| Command | What it does |
-|---|---|
-| `add` | Add a new product to the inventory |
-| `list` | Show all products |
-| `mod` | Update a product by ID |
-| `del` | Remove a product by ID |
-| `help` | Print the list of commands |
-| `exit` | Close the program |
-
-## Running the app
-
-Run the program with:
-
-```bash
-python main.py
-```
+This file is local development data and should not be included in pull requests.
