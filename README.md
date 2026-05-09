@@ -8,9 +8,39 @@ The project scope is not locked, and a front-end is planned for near future, as 
 
 ## Getting started
 
-To get started, read the developer handbook and collaboration guidance in the wiki.
+The full setup and contribution guide lives in the [Pynventory wiki](https://github.com/blomma-dev/pynventory/wiki).
 
-**[Click to open the Pynventory wiki](https://github.com/blomma-dev/pynventory/wiki)**
+Quick local setup:
+
+```bash
+git clone https://github.com/blomma-dev/pynventory.git
+cd pynventory
+python -m venv .venv
+```
+
+Activate the virtual environment:
+
+```bash
+# Linux / macOS
+source .venv/bin/activate
+
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
+```
+
+Install development tools:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the app:
+
+```bash
+python main.py
+```
+
+For the full workflow, read the [Developer handbook](https://github.com/blomma-dev/pynventory/wiki/Developer-handbook) and [Collaboration guidelines](https://github.com/blomma-dev/pynventory/wiki/Collaboration-guidelines).
 
 The wiki is the main place for setup, contribution guidance, and project documentation.
 
