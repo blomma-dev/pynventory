@@ -1,13 +1,11 @@
 from database import create_table
-from helpers import main_show_help
-from functions import (
+from helpers import main_show_help, list_commands
+from db_operations import (
     add_item,
     del_item,
-    list_commands,
     list_items,
     modify_item,
 )
-
 
 def main():
     create_table()

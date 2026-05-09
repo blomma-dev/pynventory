@@ -33,10 +33,26 @@ def modify_show_help():
         exit - Exit to main menu
     """)
 
+# create a list of commands
+available_commands = ["add", "del", "mod", "list", "help", "exit"]
+
+# create function to list commands
+def list_commands():
+    print("Incorrect command.")
+    main_show_help()
+
 def print_options(title, options):
     print(title)
     for option in options:
         print(f"- {option}")
     print()
 
-
+def print_product_brief(product):
+    print(f"\nCategory: {product[2]}")
+    print(f"Brand: {product[3]}")
+    print(f"Name: {product[4]}")
+    print(f"Buy price: {product[5]}")
+    print(f"Sell price: {product[6]}")
+    print(f"Tax: {product[7]}")
+    print(f"Weight: {product[8]}")
+    print(f"Stock: {product[9]}\n")

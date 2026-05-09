@@ -1,38 +1,7 @@
 from database import get_connection
 from models import Product
-from helpers import print_options, modify_show_help
-
-# create a list of commands
-available_commands = ["add", "del", "mod", "list", "help", "exit"]
-
-
-def is_non_negative_number(value):
-    text = value.strip()
-    if not text:
-        return False
-    if text.count(".") > 1:
-        return False
-    if text.startswith("-"):
-        return False
-    number_part = text.replace(".", "", 1)
-    return number_part.isdigit()
-
-
-def print_product_brief(product):
-    print(f"\nCategory: {product[2]}")
-    print(f"Brand: {product[3]}")
-    print(f"Name: {product[4]}")
-    print(f"Buy price: {product[5]}")
-    print(f"Sell price: {product[6]}")
-    print(f"Tax: {product[7]}")
-    print(f"Weight: {product[8]}")
-    print(f"Stock: {product[9]}\n")
-
-
-# create function to list commands
-def list_commands():
-    print_options("Incorrect command. Available commands:", available_commands)
-
+from helpers import modify_show_help, print_product_brief
+from validators import is_non_negative_number
 
 # function to add a new product
 def add_item():
