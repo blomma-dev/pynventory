@@ -302,7 +302,7 @@ def modify_item():
                 # asking for new brand until something is entered
                 while True:
                     value = input(
-                        "Enter new brand (use correct capitalization): "
+                        "Enter new brand: "
                     ).strip()  # TODO fix capitalization after special character i.e: " ' "
                     if value:
                         break
@@ -314,7 +314,7 @@ def modify_item():
             elif command == "name":
                 # asking for new product name until something is entered
                 while True:
-                    value = input("Enter new name (use correct capitalization): ").strip()
+                    value = input("Enter new name: ").strip()
                     if value:
                         break
                     print("Name cannot be empty.")
