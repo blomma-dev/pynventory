@@ -36,14 +36,14 @@ def add_item():
 
         # asking for brand name until something is entered
         while True:
-            brand_name = input("Enter brand name: ").strip().title()
+            brand_name = input("Enter brand name (use correct capitalization): ").strip()
             if brand_name:
                 break
             print("Brand name cannot be empty.\n")
 
         # asking for product name until something is entered
         while True:
-            product_name = input("Enter product name: ").strip().title()
+            product_name = input("Enter product name (use correct capitalization): ").strip()
             if product_name:
                 break
             print("Product name cannot be empty.\n")
@@ -302,7 +302,7 @@ def modify_item():
                 # asking for new brand until something is entered
                 while True:
                     value = input(
-                        "Enter new brand: "
+                        "Enter new brand (use correct capitalization): "
                     ).strip()  # TODO fix capitalization after special character i.e: " ' "
                     if value:
                         break
@@ -314,7 +314,7 @@ def modify_item():
             elif command == "name":
                 # asking for new product name until something is entered
                 while True:
-                    value = input("Enter new name: ").strip().title()
+                    value = input("Enter new name (use correct capitalization): ").strip()
                     if value:
                         break
                     print("Name cannot be empty.")
