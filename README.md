@@ -2,13 +2,33 @@
 
 Pynventory is a collaborative, invite-only learning project built around a small inventory management application.
 
-The goal is to practice real software development workflows in a supportive environment: softawre developmen, Git branches, GitHub Issues, pull requests, code review, releases, and teamwork.
+The goal is to practice real software development workflows in a supportive environment: Python, Git branches, GitHub Issues, pull requests, code review, releases, and teamwork.
 
 The application currently runs in the terminal and uses SQLite for local data storage. It starts simple on purpose so contributors can focus on learning, improving the app step by step, and working together.
 
+## What it does
+
+Pynventory currently lets you:
+
+- add products to inventory
+- list saved products
+- modify existing products
+- delete products
+- store data between runs using SQLite
+
+Products track details such as category, brand, product name, buy price, sell price, tax percentage, weight, and stock amount.
+
+The project is currently focused on improving the terminal-based inventory app before moving toward a web interface. For more detail, see the [Project roadmap](https://github.com/blomma-dev/pynventory/wiki/Project-roadmap).
+
+## Requirements
+
+- Python 3.8 or newer
+- No app dependencies beyond the Python standard library and SQLite
+- `requirements.txt` currently contains Ruff for development checks
+
 ## Quick start
 
-The setup guide is available here: [Local development setup](https://github.com/blomma-dev/pynventory/wiki/Local-development-setup).
+For the full setup guide, read [Local development setup](https://github.com/blomma-dev/pynventory/wiki/Local-development-setup).
 
 Run the app from the repository root with:
 
@@ -16,60 +36,39 @@ Run the app from the repository root with:
 python -m pynventory.main
 ```
 
-## Current project phase
+## Commands
 
-The current focus is improving the terminal-based inventory app before moving toward a web interface.
+| Command | What it does |
+|---|---|
+| `add` | Add a new product to the inventory |
+| `list` | Show all products |
+| `mod` | Update a product by ID |
+| `del` | Remove a product by ID |
+| `help` | Print the list of commands |
+| `exit` | Close the program |
 
-Near-term priorities include:
-
-- improving inventory behavior
-- adding quantity and selling features
-- adding search and better list output
-- introducing simple automated tests
-- keeping the contributor workflow clear and beginner-friendly
-
-For more detail, see the [Project roadmap](https://github.com/blomma-dev/pynventory/wiki/Project-roadmap).
-
-## Contributing
-
-Most work starts from a GitHub Issue, happens on a branch, and is merged through a pull request.
-
-If you are new to the project, start here:
-
-- [Your first contribution](https://github.com/blomma-dev/pynventory/wiki/Your-first-contribution)
-- [Developer handbook](https://github.com/blomma-dev/pynventory/wiki/Developer-handbook)
-- [Collaboration guidelines](https://github.com/blomma-dev/pynventory/wiki/Collaboration-guidelines)
-- [Manual testing guide](https://github.com/blomma-dev/pynventory/wiki/Manual-testing-guide)
-- [Code style and quality guide](https://github.com/blomma-dev/pynventory/wiki/Code-style-and-quality-guide)
-
-Before opening a pull request:
-
-- link the pull request to a GitHub Issue
-- test your change manually
-- run Ruff if you changed Python code
-- make sure `data/products.db` is not included in your commit
-
-## Project documentation
+## Docs & contributing
 
 The wiki is the main place for setup, contribution guidance, and project documentation.
 
-Useful pages:
-
 - [Wiki home](https://github.com/blomma-dev/pynventory/wiki)
 - [Local development setup](https://github.com/blomma-dev/pynventory/wiki/Local-development-setup)
+- [Your first contribution](https://github.com/blomma-dev/pynventory/wiki/Your-first-contribution)
+- [Collaboration guidelines](https://github.com/blomma-dev/pynventory/wiki/Collaboration-guidelines)
+- [Developer handbook](https://github.com/blomma-dev/pynventory/wiki/Developer-handbook)
+- [Manual testing guide](https://github.com/blomma-dev/pynventory/wiki/Manual-testing-guide)
+- [Code style and quality guide](https://github.com/blomma-dev/pynventory/wiki/Code-style-and-quality-guide)
 - [Project roadmap](https://github.com/blomma-dev/pynventory/wiki/Project-roadmap)
 - [Troubleshooting](https://github.com/blomma-dev/pynventory/wiki/Troubleshooting)
 - [FAQ](https://github.com/blomma-dev/pynventory/wiki/FAQ)
-- [Useful links](https://github.com/blomma-dev/pynventory/wiki/Useful-links)
 
-## Project management
+Most work starts from a GitHub Issue, happens on a branch, and is merged through a pull request.
 
-GitHub Issues are used to track tasks, bugs, questions, and planned work.
+- Project planning and roadmap items are tracked in the [Project roadmap](https://github.com/blomma-dev/pynventory/wiki/Project-roadmap).
+- Concrete tasks, bugs, and feature ideas are tracked in [GitHub Issues](https://github.com/blomma-dev/pynventory/issues).
 
 - [Issues](https://github.com/blomma-dev/pynventory/issues)
 - [Project board](https://github.com/users/blomma-dev/projects/2)
-
-Discord is used for quick communication, asking questions, and discussing work in progress.
 
 ## Local database note
 
