@@ -4,4 +4,4 @@
 __pycache__
 .idea/
 products.db
-products.db
+data/*.db

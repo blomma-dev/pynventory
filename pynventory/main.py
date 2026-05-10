@@ -1,6 +1,6 @@
-from database import create_table
-from helpers import main_help_dialog, list_commands
-from db_operations import (
+from pynventory.database import create_table
+from pynventory.helpers import main_help_dialog, list_commands
+from pynventory.db_operations import (
     add_item,
     delete_item,
     list_items,
