@@ -510,6 +510,7 @@ def search_brand_or_product():
         print(
             "Incorrect option, select either brand or product (or leave empty for both)"
         )
+        search_brand_or_product()
 
     # fetch the actual results from DB
     results = cursor.fetchall()
