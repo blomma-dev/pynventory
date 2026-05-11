@@ -482,6 +482,7 @@ def search_brand_or_product():
     term = input("Search for keyword (leave empty to list all): ").strip()
     if term == "":
         list_items()
+        conn.close()
         return
 
     pattern = f"%{term}%"
