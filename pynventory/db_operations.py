@@ -230,186 +230,186 @@ def delete_item():
 
 # function to modify a product by id and field
 def modify_item():
-    try:
-        # connecting to sqlite database
-        conn = get_connection()
-        # creating a cursor object using the cursor() method
-        cursor = conn.cursor()
+    # connecting to sqlite database
+    conn = get_connection()
+    # creating a cursor object using the cursor() method
+    cursor = conn.cursor()
 
-        print('Type "list" to show products, "exit" to close, "help" for options.')
+    print('Type "list" to show products, "exit" to close, "help" for options.')
+    while True:
+        try:
 
-        # ask for which id to modify
-        while True:
-            row_to_update = input("Enter product ID to update: ").strip()
+            # ask for which id to modify
+            while True:
+                row_to_update = input("Enter product ID to update: ").strip()
 
-            if row_to_update == "list":
-                list_items()
+                if row_to_update == "list":
+                    list_items()
+                    continue
+
+                if row_to_update == "help":
+                    modify_help_dialog()
+                    continue
+
+                if row_to_update == "exit":
+                    print("Exiting modification mode...")
+                    conn.close()
+                    return
+
+                break
+
+            # fetch the product by id
+            cursor.execute("SELECT * FROM product WHERE id = ?", (row_to_update,))
+            product = cursor.fetchone()
+
+            # if id not found, exit
+            if product is None:
+                print(f"No product found with ID {row_to_update}.")
                 continue
 
-            if row_to_update == "help":
-                modify_help_dialog()
-                continue
+            # print current product values
+            print_product_brief(product)
 
-            if row_to_update == "exit":
-                print("Exiting modification mode...")
-                conn.close()
-                return
+            # ask user for which field to modify
+            while True:
+                command = input("Enter field to modify: ").strip().lower()
 
-            break
+                if command == "exit":
+                    print("Exiting modification mode...")
+                    conn.close()
+                    return
 
-        # fetch the product by id
-        cursor.execute("SELECT * FROM product WHERE id = ?", (row_to_update,))
-        product = cursor.fetchone()
+                if command == "help":
+                    modify_help_dialog()
+                    continue
 
-        # if id not found, exit
-        if product is None:
-            print(f"No product found with ID {row_to_update}.")
+                if command == "list":
+                    list_items()
+                    continue
+
+                if command == "category":
+                    # asking for new category until something is entered
+                    while True:
+                        value = input("Enter new category: ").strip().title()
+                        if value:
+                            break
+                        print("Category cannot be empty.")
+                    cursor.execute(
+                        "UPDATE product SET category = ? WHERE id = ?", (value, row_to_update)
+                    )
+
+                elif command == "brand":
+                    # asking for new brand until something is entered
+                    while True:
+                        value = input(
+                            "Enter new brand: "
+                        ).strip()  # TODO fix capitalization after special character i.e: " ' "
+                        if value:
+                            break
+                        print("Brand cannot be empty.")
+                    cursor.execute(
+                        "UPDATE product SET brand_name = ? WHERE id = ?", (value, row_to_update)
+                    )
+
+                elif command == "name":
+                    # asking for new product name until something is entered
+                    while True:
+                        value = input("Enter new name: ").strip().title()
+                        if value:
+                            break
+                        print("Name cannot be empty.")
+                    cursor.execute(
+                        "UPDATE product SET product_name = ? WHERE id = ?",
+                        (value, row_to_update),
+                    )
+
+                elif command == "buy price":
+                    # asking for new buy price until a valid number is entered
+                    while True:
+                        value = input("Enter new buy price: ").strip()
+                        if not is_non_negative_number(value):
+                            print("Price must be a number.")
+                            continue
+                        value = float(value)
+                        break
+                    cursor.execute(
+                        "UPDATE product SET price_buy = ? WHERE id = ?", (value, row_to_update)
+                    )
+
+                elif command == "sell price":
+                    # asking for new sell price until a valid number is entered
+                    while True:
+                        value = input("Enter new sell price: ").strip()
+                        if not is_non_negative_number(value):
+                            print("Price must be a number.")
+                            continue
+                        value = float(value)
+                        break
+                    cursor.execute(
+                        "UPDATE product SET price_sell = ? WHERE id = ?", (value, row_to_update)
+                    )
+
+                elif command == "tax":
+                    # asking for new tax percentage until a valid number is entered
+                    while True:
+                        value = input("Enter new tax: ").strip()
+                        if not is_non_negative_number(value):
+                            print("Tax must be a number.")
+                            continue
+                        value = float(value)
+                        break
+                    cursor.execute(
+                        "UPDATE product SET tax_percentage = ? WHERE id = ?",
+                        (value, row_to_update),
+                    )
+
+                elif command == "weight":
+                    # asking for new weight until a valid number is entered
+                    while True:
+                        value = input("Enter new weight: ").strip()
+                        if not is_non_negative_number(value):
+                            print("Weight must be a number.")
+                            continue
+                        value = int(value)
+                        break
+                    cursor.execute(
+                        "UPDATE product SET weight = ? WHERE id = ?",
+                        (value, row_to_update),
+                    )
+
+                elif command == "stock":
+                    # asking for new stock amount until a valid number is entered
+                    while True:
+                        value = input("Enter new stock: ").strip()
+                        if not is_non_negative_number(value):
+                            print("Amount must be a number.")
+                            continue
+                        value = int(value)
+                        break
+                    cursor.execute(
+                        "UPDATE product SET in_stock = ? WHERE id = ?",
+                        (value, row_to_update),
+                    )
+
+                else:
+                    print("Unknown option.\n")
+                    modify_help_dialog()
+                    continue
+
+                # commit changes and stay in modify mode
+                conn.commit()
+                print("Updated successfully.")
+
+        except OverflowError:
+            print("\nError: A numerical value in product has reached max size. Aborted.")
             conn.close()
-            return
 
-        # print current product values
-        print_product_brief(product)
+        except ValueError:
+            print("\nError: The provided number value is not accepted.")
+            conn.close()
 
-        # ask user for which field to modify
-        while True:
-            command = input("Enter field to modify: ").strip().lower()
-
-            if command == "exit":
-                print("Exiting modification mode...")
-                conn.close()
-                return
-
-            if command == "help":
-                modify_help_dialog()
-                continue
-
-            if command == "list":
-                list_items()
-                continue
-
-            if command == "category":
-                # asking for new category until something is entered
-                while True:
-                    value = input("Enter new category: ").strip().title()
-                    if value:
-                        break
-                    print("Category cannot be empty.")
-                cursor.execute(
-                    "UPDATE product SET category = ? WHERE id = ?", (value, row_to_update)
-                )
-
-            elif command == "brand":
-                # asking for new brand until something is entered
-                while True:
-                    value = input(
-                        "Enter new brand: "
-                    ).strip()  # TODO fix capitalization after special character i.e: " ' "
-                    if value:
-                        break
-                    print("Brand cannot be empty.")
-                cursor.execute(
-                    "UPDATE product SET brand_name = ? WHERE id = ?", (value, row_to_update)
-                )
-
-            elif command == "name":
-                # asking for new product name until something is entered
-                while True:
-                    value = input("Enter new name: ").strip().title()
-                    if value:
-                        break
-                    print("Name cannot be empty.")
-                cursor.execute(
-                    "UPDATE product SET product_name = ? WHERE id = ?",
-                    (value, row_to_update),
-                )
-
-            elif command == "buy price":
-                # asking for new buy price until a valid number is entered
-                while True:
-                    value = input("Enter new buy price: ").strip()
-                    if not is_non_negative_number(value):
-                        print("Price must be a number.")
-                        continue
-                    value = float(value)
-                    break
-                cursor.execute(
-                    "UPDATE product SET price_buy = ? WHERE id = ?", (value, row_to_update)
-                )
-
-            elif command == "sell price":
-                # asking for new sell price until a valid number is entered
-                while True:
-                    value = input("Enter new sell price: ").strip()
-                    if not is_non_negative_number(value):
-                        print("Price must be a number.")
-                        continue
-                    value = float(value)
-                    break
-                cursor.execute(
-                    "UPDATE product SET price_sell = ? WHERE id = ?", (value, row_to_update)
-                )
-
-            elif command == "tax":
-                # asking for new tax percentage until a valid number is entered
-                while True:
-                    value = input("Enter new tax: ").strip()
-                    if not is_non_negative_number(value):
-                        print("Tax must be a number.")
-                        continue
-                    value = float(value)
-                    break
-                cursor.execute(
-                    "UPDATE product SET tax_percentage = ? WHERE id = ?",
-                    (value, row_to_update),
-                )
-
-            elif command == "weight":
-                # asking for new weight until a valid number is entered
-                while True:
-                    value = input("Enter new weight: ").strip()
-                    if not is_non_negative_number(value):
-                        print("Weight must be a number.")
-                        continue
-                    value = int(value)
-                    break
-                cursor.execute(
-                    "UPDATE product SET weight = ? WHERE id = ?",
-                    (value, row_to_update),
-                )
-
-            elif command == "stock":
-                # asking for new stock amount until a valid number is entered
-                while True:
-                    value = input("Enter new stock: ").strip()
-                    if not is_non_negative_number(value):
-                        print("Amount must be a number.")
-                        continue
-                    value = int(value)
-                    break
-                cursor.execute(
-                    "UPDATE product SET in_stock = ? WHERE id = ?",
-                    (value, row_to_update),
-                )
-
-            else:
-                print("Unknown option.\n")
-                modify_help_dialog()
-                continue
-
-            # commit changes and stay in modify mode
-            conn.commit()
-            print("Updated successfully.")
-
-    except OverflowError:
-        print("\nError: A numerical value in product has reached max size. Aborted.")
-        conn.close()
-
-    except ValueError:
-        print("\nError: The provided number value is not accepted.")
-        conn.close()
-
-    except KeyboardInterrupt:
-        print("\n")
+        except KeyboardInterrupt:
+            print("\n")
 
 # function to list all products in the database
 def list_items():
