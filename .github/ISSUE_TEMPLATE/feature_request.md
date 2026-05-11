@@ -7,23 +7,38 @@ assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+## User Story
+As a **[user type]**, I want to **[action/capability]** so that **[benefit/reason]**.
 
-**Describe the solution you'd like**
+## Problem Statement
+Describe the problem this feature solves. What friction point does it remove?
+
+## Proposed Solution
 A clear and concise description of what you want to happen.
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+## Scope
+What is included in this feature? What are the boundaries?
+- Include: [...]
+- Exclude: [...]
 
-**Acceptance criteria**
-This issue can be considered done when:
-- [ ] The requested feature works as described
-- [ ] The feature has been tested manually
-- [ ] Existing related behavior still works
-- [ ] Documentation or user-facing instructions are updated if needed
+## Rationale
+Why is this feature important? What value does it provide?
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+## Example Usage
+How would a user interact with this feature?
 
-After creating this issue, create your branch from this issue's Development section.
+## Acceptance Criteria
+This feature is complete when:
+- [ ] The feature works as described in the user story
+- [ ] All edge cases are handled gracefully
+- [ ] Input validation is in place where needed
+- [ ] Feature has been tested manually end-to-end
+- [ ] Existing related functionality still works correctly
+- [ ] Code follows project style guidelines (`ruff format .` / `ruff check .`)
+- [ ] Documentation or help text is updated if user-facing
+
+## Dependencies
+Any other issues or features that this depends on?
+
+## Additional Context
+Add any other context, screenshots, or references here.
