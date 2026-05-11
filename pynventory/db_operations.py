@@ -470,68 +470,94 @@ def list_items():
     conn.close()
 
 
-# defining new function for searching items or brands from DB
+# defining search function for items by keyword
 def search_brand_or_product():
     # connecting to sqlite database
     conn = get_connection()
 
-    # creating a cursor object using the cursor() method
-    cursor = conn.cursor()
+    try:
+        # creating a cursor object using the cursor() method
+        cursor = conn.cursor()
 
-    # ask user for keyword to search with, if the input is empty -> list all items and exit the function
-    term = input("Search for keyword (leave empty to list all): ").strip()
-    if term == "":
-        list_items()
-        conn.close()
-        return
+        # ask user for keyword to search with until it is not empty
+        while True:
+            term = input("Search for keyword: ").strip()
+            if term:
+                break
+            print("Keyword cannot be empty.\n")
 
-    pattern = f"%{term}%"
+        pattern = f"%{term}%"
 
-    # ask user input for brand or product choice, make it lowercase
-    choice = input("Brand or product? (or leave empty for both): ").strip().lower()
-
-    # if user selects brand -> retrieve brand by keyword
-    if choice == "brand":
-        cursor.execute("SELECT * FROM product WHERE brand_name LIKE ?", (pattern,))
-
-    # if user selects product -> retrieve products by keyword
-    elif choice == "product":
-        cursor.execute("SELECT * FROM product WHERE product_name LIKE ?", (pattern,))
-
-    # if input was empty, list all matching with brand and product
-    elif choice == "":
-        cursor.execute(
-            "SELECT * FROM product WHERE brand_name LIKE ? OR product_name LIKE ?",
-            (pattern, pattern),
-        )
-
-    # for other texts, provide error message
-    else:
-        print(
-            "Incorrect option, select either brand or product (or leave empty for both)"
-        )
-
-    # fetch the actual results from DB
-    results = cursor.fetchall()
-
-    # if no results -> provide error message
-    if not results:
-        print("No results found.\n")
-
-    # else show results formatted
-    else:
-        print("Results:\n")
-        for result in results:
-            print(
-                f"ID: {result[0]} | "
-                f"Type: {result[1]} | "
-                f"Category: {result[2]} | "
-                f"Brand: {result[3]} | "
-                f"Name: {result[4]} | "
-                f"Buy: {result[5]:.2f} | "
-                f"Sell: {result[6]:.2f} | "
-                f"Tax: {result[7]:.2f}% | "
-                f"Weight: {int(result[8])}g | "
-                f"In Stock: {int(result[9])} pcs."
+        # keep asking until the user enters a valid search scope
+        while True:
+            choice = (
+                input("Brand, product or category? (or leave empty for all): ")
+                .strip()
+                .lower()
             )
-        print()
+
+            if choice == "brand":
+                cursor.execute(
+                    "SELECT * FROM product WHERE brand_name LIKE ?",
+                    (pattern,),
+                )
+                break
+
+            elif choice == "product":
+                cursor.execute(
+                    "SELECT * FROM product WHERE product_name LIKE ?",
+                    (pattern,),
+                )
+                break
+
+            elif choice == "category":
+                cursor.execute(
+                    "SELECT * FROM product WHERE category LIKE ?",
+                    (pattern,),
+                )
+                break
+
+            elif choice == "":
+                cursor.execute(
+                    """
+                    SELECT * FROM product
+                    WHERE brand_name LIKE ?
+                    OR product_name LIKE ?
+                    OR category LIKE ?
+                    """,
+                    (pattern, pattern, pattern),
+                )
+                break
+
+            print(
+                "Incorrect option. Type brand, product, category, or press Enter for all."
+            )
+
+        # fetch the actual results from DB
+        results = cursor.fetchall()
+
+        # if no results -> provide error message
+        if not results:
+            print("No results found.\n")
+
+        # else show results formatted
+        else:
+            print("Results:\n")
+            for result in results:
+                print(
+                    f"ID: {result[0]} | "
+                    f"Type: {result[1]} | "
+                    f"Category: {result[2]} | "
+                    f"Brand: {result[3]} | "
+                    f"Name: {result[4]} | "
+                    f"Buy: {result[5]:.2f} | "
+                    f"Sell: {result[6]:.2f} | "
+                    f"Tax: {result[7]:.2f}% | "
+                    f"Weight: {int(result[8])}g | "
+                    f"In Stock: {int(result[9])} pcs."
+                )
+            print(f"\nTotal results: {len(results)}")
+            print()
+
+    finally:
+        conn.close()
