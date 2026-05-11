@@ -1,29 +1,41 @@
 ---
 name: Task / Chore
-about: Task / chore / refactor template
+about: Refactoring, cleanup, or maintenance work
 title: "Describe the task briefly"
-labels: 'chore'
+labels: chore
 assignees: ''
 
 ---
 
-**Is your suggestion related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+## Description
+What needs to be done and why?
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+## Scope
+What files, modules, or areas are affected?
+- Include: [...]
+- Exclude: [...]
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+## Rationale
+Why is this task important? What benefit does it provide?
+- Code maintainability?
+- Technical debt reduction?
+- Documentation?
+- Code quality improvement?
+- Better performance?
 
-**Acceptance criteria**
-This issue can be considered done when:
-- [ ] The requested task is complete
-- [ ] The change has been checked manually
-- [ ] Existing related behavior still works
-- [ ] Documentation or project guidance is updated if needed
+## Acceptance Criteria
+This task is complete when:
+- [ ] All specified changes are implemented
+- [ ] The code follows project style guidelines (`ruff format .` / `ruff check .`)
+- [ ] No regression in existing functionality
+- [ ] Changes have been tested manually where applicable
+- [ ] Related documentation is updated if needed
+- [ ] Code review is approved
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+## Subtasks (if applicable)
+- [ ] Subtask 1
+- [ ] Subtask 2
+- [ ] Subtask 3
 
-After creating this issue, create your branch from this issue's Development section.
+## Additional Notes
+Any other context or implementation hints?
