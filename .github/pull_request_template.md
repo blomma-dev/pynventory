@@ -2,8 +2,8 @@
 <!-- Briefly describe what this PR does. 2–3 sentences. -->
 
 ## Linked Issue
-<!-- Required. Use the hashtag syntax. -->
-Closes #[issue-number]
+<!-- Required. Use the hashtag syntax with issue number. -->
+Closes #
 
 ## User Story
 <!-- If applicable, which user story does this PR fulfill? -->
