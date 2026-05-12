@@ -1,7 +1,12 @@
 from pynventory.database import get_connection
+from pynventory.helpers import (
+    delete_help_dialog,
+    modify_help_dialog,
+    print_product_brief,
+)
 from pynventory.models import Product
-from pynventory.helpers import modify_help_dialog, delete_help_dialog, print_product_brief
 from pynventory.validators import is_non_negative_number
+
 
 # function to add a new product
 def add_item():
@@ -17,7 +22,9 @@ def add_item():
         # asking for item type until correct value is entered
         while True:
             item_type = (
-                input("Enter product type (physical = p / digital = d): ").strip().lower()
+                input("Enter product type (physical = p / digital = d): ")
+                .strip()
+                .lower()
             )
             if item_type == "p":
                 item_type = "physical"
@@ -36,14 +43,18 @@ def add_item():
 
         # asking for brand name until something is entered
         while True:
-            brand_name = input("Enter brand name (use correct capitalization): ").strip()
+            brand_name = input(
+                "Enter brand name (use correct capitalization): "
+            ).strip()
             if brand_name:
                 break
             print("Brand name cannot be empty.\n")
 
         # asking for product name until something is entered
         while True:
-            product_name = input("Enter product name (use correct capitalization): ").strip()
+            product_name = input(
+                "Enter product name (use correct capitalization): "
+            ).strip()
             if product_name:
                 break
             print("Product name cannot be empty.\n")
@@ -164,6 +175,7 @@ def add_item():
         print("\n")
         conn.close()
 
+
 # function to delete a product by id
 def delete_item():
     try:
@@ -227,6 +239,7 @@ def delete_item():
     except KeyboardInterrupt:
         print("\n")
         conn.close()
+
 
 # function to modify a product by id and field
 def modify_item():
@@ -295,20 +308,22 @@ def modify_item():
                         break
                     print("Category cannot be empty.")
                 cursor.execute(
-                    "UPDATE product SET category = ? WHERE id = ?", (value, row_to_update)
+                    "UPDATE product SET category = ? WHERE id = ?",
+                    (value, row_to_update),
                 )
 
             elif command == "brand":
                 # asking for new brand until something is entered
                 while True:
-                    value = input(
-                        "Enter new brand: "
-                    ).strip()  # TODO fix capitalization after special character i.e: " ' "
+                    value = (
+                        input("Enter new brand: ").strip()
+                    )  # TODO fix capitalization after special character i.e: " ' "
                     if value:
                         break
                     print("Brand cannot be empty.")
                 cursor.execute(
-                    "UPDATE product SET brand_name = ? WHERE id = ?", (value, row_to_update)
+                    "UPDATE product SET brand_name = ? WHERE id = ?",
+                    (value, row_to_update),
                 )
 
             elif command == "name":
@@ -333,7 +348,8 @@ def modify_item():
                     value = float(value)
                     break
                 cursor.execute(
-                    "UPDATE product SET price_buy = ? WHERE id = ?", (value, row_to_update)
+                    "UPDATE product SET price_buy = ? WHERE id = ?",
+                    (value, row_to_update),
                 )
 
             elif command == "sell price":
@@ -346,7 +362,8 @@ def modify_item():
                     value = float(value)
                     break
                 cursor.execute(
-                    "UPDATE product SET price_sell = ? WHERE id = ?", (value, row_to_update)
+                    "UPDATE product SET price_sell = ? WHERE id = ?",
+                    (value, row_to_update),
                 )
 
             elif command == "tax":
@@ -411,6 +428,7 @@ def modify_item():
     except KeyboardInterrupt:
         print("\n")
 
+
 # function to list all products in the database
 def list_items():
     # connecting to sqlite database
@@ -450,3 +468,96 @@ def list_items():
 
     # closing the connection
     conn.close()
+
+
+# defining search function for items by keyword
+def search_brand_or_product():
+    # connecting to sqlite database
+    conn = get_connection()
+
+    try:
+        # creating a cursor object using the cursor() method
+        cursor = conn.cursor()
+
+        # ask user for keyword to search with until it is not empty
+        while True:
+            term = input("Search for keyword: ").strip()
+            if term:
+                break
+            print("Keyword cannot be empty.\n")
+
+        pattern = f"%{term}%"
+
+        # keep asking until the user enters a valid search scope
+        while True:
+            choice = (
+                input("Brand, product or category? (or leave empty for all): ")
+                .strip()
+                .lower()
+            )
+
+            if choice == "brand":
+                cursor.execute(
+                    "SELECT * FROM product WHERE brand_name LIKE ?",
+                    (pattern,),
+                )
+                break
+
+            elif choice == "product":
+                cursor.execute(
+                    "SELECT * FROM product WHERE product_name LIKE ?",
+                    (pattern,),
+                )
+                break
+
+            elif choice == "category":
+                cursor.execute(
+                    "SELECT * FROM product WHERE category LIKE ?",
+                    (pattern,),
+                )
+                break
+
+            elif choice == "":
+                cursor.execute(
+                    """
+                    SELECT * FROM product
+                    WHERE brand_name LIKE ?
+                    OR product_name LIKE ?
+                    OR category LIKE ?
+                    """,
+                    (pattern, pattern, pattern),
+                )
+                break
+
+            print(
+                "Incorrect option. Type brand, product, category, or press Enter for all."
+            )
+
+        # fetch the actual results from DB
+        results = cursor.fetchall()
+
+        # if no results -> provide error message
+        if not results:
+            print("No results found.\n")
+
+        # else show results formatted
+        else:
+            print("Results:\n")
+            for result in results:
+                print(
+                    f"ID: {result[0]} | "
+                    f"Type: {result[1]} | "
+                    f"Category: {result[2]} | "
+                    f"Brand: {result[3]} | "
+                    f"Name: {result[4]} | "
+                    f"Buy: {result[5]:.2f} | "
+                    f"Sell: {result[6]:.2f} | "
+                    f"Tax: {result[7]:.2f}% | "
+                    f"Weight: {int(result[8])}g | "
+                    f"In Stock: {int(result[9])} pcs."
+                )
+            print(f"\nTotal results: {len(results)}")
+            print()
+
+    finally:
+        conn.close()

@@ -1,11 +1,13 @@
 from pynventory.database import create_table
-from pynventory.helpers import main_help_dialog, list_commands
 from pynventory.db_operations import (
     add_item,
     delete_item,
     list_items,
     modify_item,
+    search_brand_or_product,
 )
+from pynventory.helpers import list_commands, main_help_dialog
+
 
 def main():
     create_table()
@@ -20,19 +22,22 @@ def main():
                 add_item()
             elif command == "list":
                 list_items()
+            elif command == "del":
+                delete_item()
+            elif command == "mod":
+                modify_item()
+            elif command == "search":
+                search_brand_or_product()
             elif command == "help":
                 main_help_dialog()
             elif command == "exit":
                 print("Exiting Pynventory.")
                 break
-            elif command == "del":
-                delete_item()
-            elif command == "mod":
-                modify_item()
             else:
                 list_commands()
     except KeyboardInterrupt:
         print("\nExiting Pynventory.")
+
 
 if __name__ == "__main__":
     main()
