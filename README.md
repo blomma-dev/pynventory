@@ -51,21 +51,29 @@ python -m pynventory.main
 
 The wiki is the main place for setup, contribution guidance, and project documentation.
 
-- [Wiki home](https://github.com/blomma-dev/pynventory/wiki)
-- [Getting started](https://github.com/blomma-dev/pynventory/wiki/Getting-started)
-- [Git & development workflow](https://github.com/blomma-dev/pynventory/wiki/Git-and-development-workflow)
-- [Code style guide](https://github.com/blomma-dev/pynventory/wiki/Code-style-guide)
-- [Testing guide](https://github.com/blomma-dev/pynventory/wiki/Testing-guide)
-- [Architecture & roadmap](https://github.com/blomma-dev/pynventory/wiki/Architecture-and-roadmap)
-- [Troubleshooting](https://github.com/blomma-dev/pynventory/wiki/Troubleshooting)
-- [FAQ](https://github.com/blomma-dev/pynventory/wiki/FAQ)
+### New contributors
+
+Follow this path from setup to your first merged pull request:
+
+1. [Getting started](https://github.com/blomma-dev/pynventory/wiki/Getting-started) - install Python, create a venv, run the app
+2. [Your first contribution](https://github.com/blomma-dev/pynventory/wiki/Your-first-contribution) - pick an issue, branch, change, test, open a PR
+3. [Code review](https://github.com/blomma-dev/pynventory/wiki/Code-review) - how reviews work and what reviewers look for
+
+### Reference pages
+
+- [Contributor workflow](https://github.com/blomma-dev/pynventory/wiki/Contributor-workflow) - branching rules, PR process, communication
+- [Git commands](https://github.com/blomma-dev/pynventory/wiki/Git-commands) - clone, commit, merge, conflicts, undo, and more
+- [Code style guide](https://github.com/blomma-dev/pynventory/wiki/Code-style-guide) - naming, Ruff, code quality
+- [Testing guide](https://github.com/blomma-dev/pynventory/wiki/Testing-guide) - how to test your change before opening a PR
+- [Troubleshooting](https://github.com/blomma-dev/pynventory/wiki/Troubleshooting) - fixes for common problems
+- [FAQ](https://github.com/blomma-dev/pynventory/wiki/FAQ) - quick answers
+- [Architecture & roadmap](https://github.com/blomma-dev/pynventory/wiki/Architecture-and-roadmap) - project structure and future plans
+- [Release guide](https://github.com/blomma-dev/pynventory/wiki/Release-guide) - how and when versions are tagged
+- [Useful links](https://github.com/blomma-dev/pynventory/wiki/Useful-links) - external resources
 
 Most work starts from a GitHub Issue, happens on a branch, and is merged through a pull request.
 
-- Project planning and roadmap items are tracked in [Architecture & roadmap](https://github.com/blomma-dev/pynventory/wiki/Architecture-and-roadmap).
 - Concrete tasks, bugs, and feature ideas are tracked in [GitHub Issues](https://github.com/blomma-dev/pynventory/issues).
-
-- [Issues](https://github.com/blomma-dev/pynventory/issues)
 - [Project board](https://github.com/users/blomma-dev/projects/2)
 
 ## Local database note
