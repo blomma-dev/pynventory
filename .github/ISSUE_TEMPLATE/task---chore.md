@@ -1,7 +1,7 @@
 ---
 name: Task / Chore
 about: Refactoring, cleanup, or maintenance work
-title: "Describe the task briefly"
+title: "[CHORE / TASK] Describe the task briefly"
 labels: chore
 assignees: ''
 
