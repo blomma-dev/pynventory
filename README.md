@@ -18,7 +18,7 @@ Pynventory currently lets you:
 
 Products track details such as category, brand, product name, buy price, sell price, tax percentage, weight, and stock amount.
 
-The project is currently focused on improving the terminal-based inventory app before moving toward a web interface. For more detail, see the [Project roadmap](https://github.com/blomma-dev/pynventory/wiki/Project-roadmap).
+The project is currently focused on improving the terminal-based inventory app before moving toward a web interface. For more detail, see [Architecture & roadmap](https://github.com/blomma-dev/pynventory/wiki/Architecture-and-roadmap).
 
 ## Requirements
 
@@ -28,7 +28,7 @@ The project is currently focused on improving the terminal-based inventory app b
 
 ## Quick start
 
-For the full setup guide, read [Local development setup](https://github.com/blomma-dev/pynventory/wiki/Local-development-setup).
+For the full setup guide, read [Getting started](https://github.com/blomma-dev/pynventory/wiki/Getting-started).
 
 Run the app from the repository root with:
 
@@ -52,19 +52,17 @@ python -m pynventory.main
 The wiki is the main place for setup, contribution guidance, and project documentation.
 
 - [Wiki home](https://github.com/blomma-dev/pynventory/wiki)
-- [Local development setup](https://github.com/blomma-dev/pynventory/wiki/Local-development-setup)
-- [Your first contribution](https://github.com/blomma-dev/pynventory/wiki/Your-first-contribution)
-- [Collaboration guidelines](https://github.com/blomma-dev/pynventory/wiki/Collaboration-guidelines)
-- [Developer handbook](https://github.com/blomma-dev/pynventory/wiki/Developer-handbook)
-- [Manual testing guide](https://github.com/blomma-dev/pynventory/wiki/Manual-testing-guide)
-- [Code style and quality guide](https://github.com/blomma-dev/pynventory/wiki/Code-style-and-quality-guide)
-- [Project roadmap](https://github.com/blomma-dev/pynventory/wiki/Project-roadmap)
+- [Getting started](https://github.com/blomma-dev/pynventory/wiki/Getting-started)
+- [Git & development workflow](https://github.com/blomma-dev/pynventory/wiki/Git-and-development-workflow)
+- [Code style guide](https://github.com/blomma-dev/pynventory/wiki/Code-style-guide)
+- [Testing guide](https://github.com/blomma-dev/pynventory/wiki/Testing-guide)
+- [Architecture & roadmap](https://github.com/blomma-dev/pynventory/wiki/Architecture-and-roadmap)
 - [Troubleshooting](https://github.com/blomma-dev/pynventory/wiki/Troubleshooting)
 - [FAQ](https://github.com/blomma-dev/pynventory/wiki/FAQ)
 
 Most work starts from a GitHub Issue, happens on a branch, and is merged through a pull request.
 
-- Project planning and roadmap items are tracked in the [Project roadmap](https://github.com/blomma-dev/pynventory/wiki/Project-roadmap).
+- Project planning and roadmap items are tracked in [Architecture & roadmap](https://github.com/blomma-dev/pynventory/wiki/Architecture-and-roadmap).
 - Concrete tasks, bugs, and feature ideas are tracked in [GitHub Issues](https://github.com/blomma-dev/pynventory/issues).
 
 - [Issues](https://github.com/blomma-dev/pynventory/issues)
