@@ -558,6 +558,7 @@ def search_brand_or_product():
                 )
             print(f"\nTotal results: {len(results)}")
             print()
-
+    
+    # finally, close connection
     finally:
         conn.close()
