@@ -25,7 +25,7 @@ def modify_help_dialog():
         buy price
         sell price
         tax
-        weigh
+        weight
         stock
 
     Commands:
