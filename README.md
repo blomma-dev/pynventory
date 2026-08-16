@@ -23,8 +23,8 @@ The project is currently focused on improving the terminal-based inventory app b
 ## Requirements
 
 - Python 3.8 or newer
-- No app dependencies beyond the Python standard library and SQLite
-- `requirements.txt` currently contains Ruff for development checks
+- No app dependencies beyond the Python standard library, Pytest and SQLite
+- `requirements.txt` currently contains Ruff and Pytest for development checks and testing
 
 ## Quick start
 
