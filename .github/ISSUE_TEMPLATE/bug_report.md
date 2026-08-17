@@ -31,9 +31,7 @@ What actually happens?
 This bug is fixed when:
 - [ ] The issue can no longer be reproduced with the provided steps
 - [ ] The expected behavior works consistently
-- [ ] No regression in related functionality
-- [ ] Fix has been tested manually with edge cases
-- [ ] Code follows project style guidelines
+- [ ] Meets the [Definition of Done](https://github.com/blomma-dev/pynventory/wiki/Contributor-workflow#definition-of-done)
 
 ## Additional Context
 Add any other relevant information here.
