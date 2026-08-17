@@ -3,9 +3,9 @@ from pynventory.helpers import (
     delete_help_dialog,
     modify_help_dialog,
     print_product_brief,
+    prompt_non_negative_number,
 )
 from pynventory.models import Product
-from pynventory.validators import is_non_negative_number
 
 
 # function to add a new product
@@ -60,53 +60,23 @@ def add_item():
             print("Product name cannot be empty.\n")
 
         # asking for buy price until a valid number is entered
-        while True:
-            value = input("Enter buy price: ").strip()
-            if not is_non_negative_number(value):
-                print("Buy price must be a number.\n")
-                continue
-            price_buy = float(value)
-            break
+        price_buy = prompt_non_negative_number("Enter buy price: ", "Buy price must be a number.\n", float)
 
-        # asking for sell price until a valid number is entered
-        while True:
-            value = input("Enter sell price: ").strip()
-            if not is_non_negative_number(value):
-                print("Sell price must be a number.\n")
-                continue
-            price_sell = float(value)
-            break
+        # asking sell price until a valid number is entered
+        price_sell = prompt_non_negative_number("Enter sell price: ", "Sell price must be a number.\n", float)
 
         # asking for tax percentage until a valid number is entered
-        while True:
-            value = input("Enter tax percentage: ").strip()
-            if not is_non_negative_number(value):
-                print("Tax percentage must be a number.\n")
-                continue
-            tax_percentage = float(value)
-            break
+        tax_percentage = prompt_non_negative_number("Enter tax percentage: ", "Tax percentage must be a number.\n", float)
 
         # asking for weight until a valid number is entered
-        while True:
-            if item_type == "digital":
-                weight = 0
-                break
-            else:
-                value = input("Enter weight (g): ").strip()
-                if not is_non_negative_number(value):
-                    print("Weight must be a number.\n")
-                    continue
-                weight = int(value)
-            break
+        if item_type == "physical":
+            weight = prompt_non_negative_number("Enter weight (g): ", "Weight must be a number.\n", int)
+        else:
+            weight = 0
+
 
         # asking for stock until a valid number is entered
-        while True:
-            value = input("Enter stock: ").strip()
-            if not is_non_negative_number(value):
-                print("Amount must be a number.\n")
-                continue
-            in_stock = int(value)
-            break
+        in_stock = prompt_non_negative_number("Enter stock amount: ", "Stock must be a number.\n", int)
 
         # creating product object only after all required fields are valid
         product = Product(
@@ -340,13 +310,7 @@ def modify_item():
 
             elif command == "buy price":
                 # asking for new buy price until a valid number is entered
-                while True:
-                    value = input("Enter new buy price: ").strip()
-                    if not is_non_negative_number(value):
-                        print("Price must be a number.")
-                        continue
-                    value = float(value)
-                    break
+                value = prompt_non_negative_number("Enter new buy price: ", "Buy price must be a number.\n", float)
                 cursor.execute(
                     "UPDATE product SET price_buy = ? WHERE id = ?",
                     (value, row_to_update),
@@ -354,13 +318,7 @@ def modify_item():
 
             elif command == "sell price":
                 # asking for new sell price until a valid number is entered
-                while True:
-                    value = input("Enter new sell price: ").strip()
-                    if not is_non_negative_number(value):
-                        print("Price must be a number.")
-                        continue
-                    value = float(value)
-                    break
+                value = prompt_non_negative_number("Enter new sell price: ", "Sell price must be a number.\n", float)
                 cursor.execute(
                     "UPDATE product SET price_sell = ? WHERE id = ?",
                     (value, row_to_update),
@@ -368,13 +326,7 @@ def modify_item():
 
             elif command == "tax":
                 # asking for new tax percentage until a valid number is entered
-                while True:
-                    value = input("Enter new tax: ").strip()
-                    if not is_non_negative_number(value):
-                        print("Tax must be a number.")
-                        continue
-                    value = float(value)
-                    break
+                value = prompt_non_negative_number("Enter new tax percentage: ", "Tax percentage must be a number.\n", float)
                 cursor.execute(
                     "UPDATE product SET tax_percentage = ? WHERE id = ?",
                     (value, row_to_update),
@@ -382,13 +334,7 @@ def modify_item():
 
             elif command == "weight":
                 # asking for new weight until a valid number is entered
-                while True:
-                    value = input("Enter new weight: ").strip()
-                    if not is_non_negative_number(value):
-                        print("Weight must be a number.")
-                        continue
-                    value = int(value)
-                    break
+                value = prompt_non_negative_number("Enter new weight (g): ", "Weight must be a number.\n", int)
                 cursor.execute(
                     "UPDATE product SET weight = ? WHERE id = ?",
                     (value, row_to_update),
@@ -396,13 +342,7 @@ def modify_item():
 
             elif command == "stock":
                 # asking for new stock amount until a valid number is entered
-                while True:
-                    value = input("Enter new stock: ").strip()
-                    if not is_non_negative_number(value):
-                        print("Amount must be a number.")
-                        continue
-                    value = int(value)
-                    break
+                value = prompt_non_negative_number("Enter new stock amount: ", "Stock amount must be a number.\n", int)
                 cursor.execute(
                     "UPDATE product SET in_stock = ? WHERE id = ?",
                     (value, row_to_update),
