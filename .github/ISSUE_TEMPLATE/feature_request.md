@@ -31,11 +31,7 @@ How would a user interact with this feature?
 This feature is complete when:
 - [ ] The feature works as described in the user story
 - [ ] All edge cases are handled gracefully
-- [ ] Input validation is in place where needed
-- [ ] Feature has been tested manually end-to-end
-- [ ] Existing related functionality still works correctly
-- [ ] Code follows project style guidelines (`ruff format .` / `ruff check .`)
-- [ ] Documentation or help text is updated if user-facing
+- [ ] Meets the [Definition of Done](https://github.com/blomma-dev/pynventory/wiki/Contributor-workflow#definition-of-done)
 
 ## Dependencies
 Any other issues or features that this depends on?
