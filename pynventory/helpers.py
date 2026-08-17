@@ -1,3 +1,5 @@
+from pynventory.validators import is_non_negative_number
+
 # print options as helper function
 # remember to import the function at functions.py
 
@@ -45,6 +47,15 @@ def delete_help_dialog():
         help - Show help
         exit - Exit to main menu
     """)
+
+
+def prompt_non_negative_number(input_text, error_message, converter=float):
+    while True:
+        value = input(input_text).strip()
+        if not is_non_negative_number(value):
+            print(error_message)
+            continue
+        return converter(value)
 
 
 # create a list of commands
